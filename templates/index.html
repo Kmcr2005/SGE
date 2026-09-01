@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="grain"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ site.org_short }} emblem" class="nav__logo">
+      <span class="nav__brand-text">
+        <span class="nav__brand-short">{{ site.org_short }}</span>
+        <span class="nav__brand-long">{{ site.org_name }}</span>
+      </span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      {% for label, href in nav_links %}
+      <a href="{{ href }}">{{ label }}</a>
+      {% endfor %}
+    </nav>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero__contours" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M -100 700 Q 250 600 550 680 T 1100 620 T 1600 700" />
+        <path d="M -100 620 Q 280 520 560 600 T 1120 540 T 1600 610" />
+        <path d="M -100 540 Q 300 440 580 520 T 1140 470 T 1600 530" />
+        <path d="M -100 460 Q 320 370 600 440 T 1160 400 T 1600 450" />
+        <path d="M -100 780 Q 230 690 540 760 T 1080 700 T 1600 780" />
+        <path d="M -100 860 Q 220 780 520 840 T 1050 790 T 1600 860" />
+      </g>
+    </svg>
+    <div class="hero__inner">
+      <p class="hero__eyebrow">{{ site.coordinates }} &nbsp;\u00b7&nbsp; {{ site.location }}</p>
+      <h1 class="hero__title">Reading the earth,<br>one layer at a time.</h1>
+      <p class="hero__lede">{{ site.org_name }} ({{ site.org_short }}) is the student-led geospatial
+        association of the Institute of Remote Sensing, College of Engineering Guindy, Anna
+        University — working across Remote Sensing, GIS, Earth Observation and Surveying.</p>
+      <div class="hero__actions">
+        <a href="#events" class="btn btn--primary">See our events</a>
+        <a href="#about" class="btn btn--ghost">About SGE</a>
+      </div>
+    </div>
+    <div class="hero__compass" aria-hidden="true">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        <circle cx="100" cy="100" r="66" fill="none" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+        <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+        <line x1="100" y1="8" x2="100" y2="192" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+        <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+        <path d="M100 20 L108 100 L100 96 L92 100 Z" fill="var(--redline)"/>
+        <text x="100" y="14" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">N</text>
+        <text x="100" y="196" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">S</text>
+        <text x="6" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">W</text>
+        <text x="194" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">E</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section section--paper" id="about">
+    <div class="section__grid section__grid--about">
+      <div class="section__col">
+        <p class="eyebrow">About the society</p>
+        <h2 class="section__title">Built inside the Institute of Remote Sensing</h2>
+        <p class="body-text">{{ about_text }}</p>
+      </div>
+      <div class="about__figure">
+        <img src="{{ url_for('static', filename='images/irs_building.jpeg') }}" alt="Institute of Remote Sensing building, College of Engineering Guindy, Anna University" class="about__photo">
+        <p class="figure-caption">Institute of Remote Sensing, College of Engineering Guindy, Anna University</p>
+        <div class="about__badge">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="SGE emblem">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION & MISSION -->
+  <section class="section section--dark" id="vision">
+    <div class="section__grid section__grid--split">
+      <div class="split__col">
+        <p class="eyebrow eyebrow--light">Vision</p>
+        <h3 class="split__title">A forward-thinking geospatial culture</h3>
+        <p class="body-text body-text--light">{{ vision_text }}</p>
+      </div>
+      <div class="split__divider" aria-hidden="true"></div>
+      <div class="split__col">
+        <p class="eyebrow eyebrow--light">Mission</p>
+        <h3 class="split__title">From classroom learning to real-world application</h3>
+        <p class="body-text body-text--light">{{ mission_text }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="section section--paper" id="events">
+    <div class="section__head">
+      <p class="eyebrow">What we run</p>
+      <h2 class="section__title">Events</h2>
+    </div>
+
+    {% for event in events %}
+    <article class="event {% if loop.index0 is odd %}event--reverse{% endif %}">
+      <div class="event__media">
+        <div class="event__images">
+          {% for img in event.images %}
+          <figure class="event__img event__img--{{ loop.index }}">
+            <img src="{{ url_for('static', filename='images/' + img.src) }}" alt="{{ img.caption }}" loading="lazy">
+          </figure>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="event__body">
+        <p class="event__meta">{{ event.meta }}</p>
+        <h3 class="event__name">{{ event.name }}</h3>
+        <p class="event__tagline">{{ event.tagline }}</p>
+        <p class="body-text">{{ event.text }}</p>
+        <ul class="event__facts">
+          {% for fact in event.facts %}
+          <li>{{ fact }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section section--dark" id="gallery">
+    <div class="section__head">
+      <p class="eyebrow eyebrow--light">From the field</p>
+      <h2 class="section__title section__title--light">Gallery</h2>
+    </div>
+    <div class="gallery">
+      {% for item in gallery %}
+      <figure class="gallery__item">
+        <img src="{{ url_for('static', filename='images/' + item.src) }}" alt="{{ item.caption }}" loading="lazy">
+        <figcaption>{{ item.caption }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section class="section section--paper" id="sponsors">
+    <div class="section__head">
+      <p class="eyebrow">Supported by</p>
+      <h2 class="section__title">Sponsors</h2>
+    </div>
+    <ol class="benchmark-list">
+      {% for sponsor in sponsors %}
+      <li class="benchmark-list__row">
+        <span class="benchmark-list__mark">BM&#8209;{{ "%02d"|format(loop.index) }}</span>
+        <span class="benchmark-list__name">{{ sponsor }}</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <!-- ALUMNI -->
+  <section class="section section--paper section--tight" id="alumni">
+    <div class="section__head">
+      <p class="eyebrow">With thanks to</p>
+      <h2 class="section__title">Alumni support</h2>
+    </div>
+    <ul class="alumni-list">
+      {% for a in alumni %}
+      <li>{{ a }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ site.org_short }} emblem" class="footer__logo">
+      <p>{{ site.org_name }}</p>
+    </div>
+    <div class="footer__col">
+      <p class="footer__heading">Find us</p>
+      <p>{{ site.parent }}</p>
+      <p>College of Engineering Guindy Campus, Anna University, Chennai &ndash; 600025</p>
+      <p class="mono-tag">{{ site.coordinates }}</p>
+    </div>
+    <div class="footer__col">
+      <p class="footer__heading">Follow SGE</p>
+      <p><a href="https://www.instagram.com/_sge_official/" target="_blank" rel="noopener">Instagram &mdash; _sge_official</a></p>
+      <p><a href="https://x.com/Sge__official" target="_blank" rel="noopener">X &mdash; Sge__official</a></p>
+      <p>LinkedIn &mdash; Society of Geoinformatics Engineers CEG</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>&copy; {{ year }} {{ site.org_short }} &middot; {{ site.parent }}</p>
+  </div>
+</footer>
+
+{% endblock %}
