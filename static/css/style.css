@@ -5,8 +5,8 @@
   --navy-900: #0e1c2e;
   --navy-800: #16283d;
   --navy-700: #203653;
-  --paper: #f3efe4;
-  --paper-dim: #e9e3d3;
+  --paper: #e9e3d3;
+  --paper-dim: #dfd7c4;
   --ink: #1b2430;
   --ink-soft: #55606f;
   --brass: #c79a46;
@@ -57,7 +57,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------------------------------------------------------------------- */
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 1rem;
   letter-spacing: 0.02em;
   color: var(--terrain);
   margin: 0 0 0.9rem;
@@ -97,75 +97,197 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ---------------------------------------------------------------------- */
-/* Nav                                                                     */
+/* Nav                                                                    */
 /* ---------------------------------------------------------------------- */
+
 .nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+
   z-index: 100;
+
   background: rgba(14, 28, 46, 0.0);
   border-bottom: 1px solid transparent;
+
   transition: background 0.25s ease, border-color 0.25s ease;
 }
+
 .nav.is-scrolled {
   background: rgba(14, 28, 46, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line-light);
 }
+
+
+/* ---------------------------------------------------------------------- */
+/* Nav inner                                                              */
+/* ---------------------------------------------------------------------- */
+
 .nav__inner {
-  max-width: var(--max);
+  max-width: 1450px;
   margin: 0 auto;
-  padding: 0.85rem 1.5rem;
+
+  padding: 0.7rem 1.25rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+
+  gap: 3rem;
 }
+
+
+/* ---------------------------------------------------------------------- */
+/* Brand                                                                  */
+/* ---------------------------------------------------------------------- */
+
 .nav__brand {
   display: flex;
   align-items: center;
+
   gap: 0.65rem;
+
   color: var(--paper);
+
+  flex-shrink: 0;
 }
-.nav__logo { width: 36px; height: 36px; }
-.nav__brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+
+.nav__logo {
+  width: 75px;
+  height: 75px;
+}
+
+.nav__brand-text {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1.1;
+}
+
 .nav__brand-short {
   font-family: var(--font-display);
   font-weight: 700;
+
   font-size: 1.15rem;
+
   letter-spacing: 0.02em;
 }
+
 .nav__brand-long {
   font-family: var(--font-mono);
+
   font-size: 0.65rem;
+
   color: var(--brass);
+
   max-width: 220px;
 }
+
+
+/* ---------------------------------------------------------------------- */
+/* Navigation links                                                       */
+/* ---------------------------------------------------------------------- */
+
 .nav__links {
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
   gap: 1.9rem;
+
+  margin-left: auto;
 }
+
 .nav__links a {
   color: rgba(243, 239, 228, 0.82);
+
   font-size: 0.92rem;
+
   transition: color 0.2s ease;
 }
-.nav__links a:hover { color: var(--brass); }
+
+.nav__links a:hover {
+  color: var(--brass);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Mobile toggle                                                          */
+/* ---------------------------------------------------------------------- */
 
 .nav__toggle {
   display: none;
+
   flex-direction: column;
   justify-content: center;
+
   gap: 5px;
-  width: 34px; height: 34px;
+
+  width: 34px;
+  height: 34px;
+
   background: none;
   border: none;
+
   cursor: pointer;
 }
+
 .nav__toggle span {
   height: 2px;
+
   background: var(--paper);
+
   border-radius: 2px;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Medium screens                                                         */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+
+  .nav__inner {
+    max-width: 100%;
+
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    gap: 2rem;
+  }
+
+  .nav__links {
+    gap: 1.35rem;
+  }
+
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Mobile                                                                 */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .nav__inner {
+    padding: 0.7rem 1.2rem;
+  }
+
+  .nav__logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
 }
 
 /* ---------------------------------------------------------------------- */
@@ -191,7 +313,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero__inner {
   position: relative;
   z-index: 2;
-  max-width: 720px;
+  max-width: 900px;
   margin: 0 auto 0 0;
   padding-left: calc((100vw - var(--max)) / 2 + 1.5rem);
 }
@@ -332,115 +454,1249 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   max-width: 22ch;
 }
 
-/* ---------------------------------------------------------------------- */
-/* Events                                                                  */
-/* ---------------------------------------------------------------------- */
-.event {
-  max-width: var(--max);
-  margin: 0 auto 6rem;
+
+
+/* ====================================================================== */
+/* VISION & MISSION — CONTOURS + SCROLL ANIMATION                         */
+/* ====================================================================== */
+
+.section--vision-mission {
+  position: relative;
+  overflow: hidden;
+
+  color: var(--paper);
+
+  background:
+    radial-gradient(
+      120% 100% at 15% 0%,
+      var(--navy-700),
+      var(--navy-900) 62%
+    );
+}
+
+
+/* ====================================================================== */
+/* CONTOUR BACKGROUND                                                      */
+/* ====================================================================== */
+
+.section--vision-mission .vision__contours {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  /*
+   * Same visual language as Events.
+   */
+  color: rgba(199, 154, 70, 0.20);
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* ====================================================================== */
+/* CONTENT LAYER                                                           */
+/* ====================================================================== */
+
+.section--vision-mission .section__grid {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* ====================================================================== */
+/* HORIZONTAL DESKTOP LAYOUT                                               */
+/* ====================================================================== */
+
+.section--vision-mission .section__grid--split {
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
+  gap: 4.5rem;
+
   align-items: center;
 }
-.event:last-child { margin-bottom: 0; }
-.event--reverse { direction: rtl; }
-.event--reverse > * { direction: ltr; }
+
+
+/* ====================================================================== */
+/* VISION / MISSION COLUMNS                                                */
+/* ====================================================================== */
+
+.section--vision-mission .split__col {
+  min-width: 0;
+}
+
+
+/* ====================================================================== */
+/* CENTER DIVIDER                                                          */
+/* ====================================================================== */
+
+.section--vision-mission .split__divider {
+
+  width: 1px;
+
+  align-self: stretch;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(243, 239, 228, 0.28),
+      transparent
+    );
+}
+
+
+/* ====================================================================== */
+/* EYEBROW                                                                 */
+/* ====================================================================== */
+
+.section--vision-mission .eyebrow {
+  margin-bottom: 0.9rem;
+}
+
+
+/* ====================================================================== */
+/* TITLES                                                                  */
+/* ====================================================================== */
+
+.section--vision-mission .split__title {
+
+  max-width: 20ch;
+
+  margin: 0 0 1.25rem;
+
+  font-family: var(--font-display);
+
+  font-weight: 600;
+
+  font-size: clamp(
+    2rem,
+    3vw,
+    2.7rem
+  );
+
+  line-height: 1.08;
+
+  letter-spacing: -0.02em;
+
+  color: var(--paper);
+}
+
+
+/* ====================================================================== */
+/* BODY TEXT                                                               */
+/* ====================================================================== */
+
+.section--vision-mission .body-text {
+
+  max-width: 55ch;
+
+  margin: 0;
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+
+  color: rgba(243, 239, 228, 0.76);
+}
+
+
+/* ====================================================================== */
+/* SCROLL REVEAL — VISION                                                  */
+/* ====================================================================== */
+
+.section--vision-mission .vision__item {
+
+  opacity: 0;
+
+  transform: translateX(-75px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ====================================================================== */
+/* SCROLL REVEAL — MISSION                                                 */
+/* ====================================================================== */
+
+.section--vision-mission .mission__item {
+
+  opacity: 0;
+
+  transform: translateX(75px);
+
+  transition:
+    opacity 0.9s ease 0.15s,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+
+/* ====================================================================== */
+/* ACTIVE STATE                                                            */
+/* ====================================================================== */
+
+.section--vision-mission .vision__item.is-visible,
+.section--vision-mission .mission__item.is-visible {
+
+  opacity: 1;
+
+  transform: translateX(0);
+}
+
+
+/* ====================================================================== */
+/* CONTOUR FADE                                                           */
+/* ====================================================================== */
+
+/*
+ * The center of the contour map is deliberately quiet.
+ *
+ * This keeps the lines visible around the section while
+ * preventing them from fighting with the Vision/Mission text.
+ */
+
+.section--vision-mission .vision__contours {
+  opacity: 1;
+}
+
+
+/* ====================================================================== */
+/* TABLET                                                                  */
+/* ====================================================================== */
 
 @media (max-width: 900px) {
-  .event, .event--reverse {
+
+  .section--vision-mission .section__grid--split {
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto
+      minmax(0, 1fr);
+
+    gap: 2.5rem;
+  }
+
+
+  .section--vision-mission .split__title {
+
+    font-size: clamp(
+      1.8rem,
+      3.5vw,
+      2.35rem
+    );
+  }
+
+}
+
+
+/* ====================================================================== */
+/* MOBILE                                                                  */
+/* ====================================================================== */
+
+@media (max-width: 700px) {
+
+  .section--vision-mission {
+
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+
+  /*
+   * Stack only on genuinely small screens.
+   */
+  .section--vision-mission .section__grid--split {
+
     grid-template-columns: 1fr;
+
+    gap: 3.5rem;
+  }
+
+
+  .section--vision-mission .split__divider {
+
+    display: none;
+  }
+
+
+  .section--vision-mission .split__title {
+
+    max-width: 22ch;
+
+    font-size: 2rem;
+  }
+
+
+  .section--vision-mission .body-text {
+
+    font-size: 0.95rem;
+
+    line-height: 1.8;
+  }
+
+
+  /* Smaller horizontal movement */
+
+  .section--vision-mission .vision__item {
+
+    transform: translateX(-40px);
+  }
+
+
+  .section--vision-mission .mission__item {
+
+    transform: translateX(40px);
+  }
+
+
+  .section--vision-mission .vision__contours {
+
+    opacity: 0.7;
+  }
+
+}
+
+
+/* ====================================================================== */
+/* REDUCED MOTION                                                          */
+/* ====================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .section--vision-mission .vision__item,
+  .section--vision-mission .mission__item {
+
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+}
+
+/* ---------------------------------------------------------------------- */
+/* Events — topographic field                                              */
+/* ---------------------------------------------------------------------- */
+
+/* ====================================================================== */
+/* EVENTS SECTION                                                         */
+/* ====================================================================== */
+
+.section--events {
+  position: relative;
+  overflow: hidden;
+
+  color: var(--paper);
+
+  background:
+    radial-gradient(
+      120% 100% at 15% 0%,
+      var(--navy-700),
+      var(--navy-900) 62%
+    );
+
+  padding-top: 7rem;
+  padding-bottom: 8rem;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Contour background                                                     */
+/* ---------------------------------------------------------------------- */
+
+.events__contours {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  color: rgba(199, 154, 70, 0.18);
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Events heading                                                         */
+/* ---------------------------------------------------------------------- */
+
+.section--events .section__head {
+  position: relative;
+
+  z-index: 2;
+}
+
+.events__head {
+  max-width: 1450px;
+
+  margin: 0 auto 5.5rem;
+
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+
+/* Light heading */
+
+.section--events .eyebrow--light {
+  color: var(--brass);
+}
+
+.section--events .section__title--light {
+  color: var(--paper);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* EVENT CONTAINER                                                        */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event {
+  position: relative;
+
+  z-index: 2;
+
+  /*
+   * Wider than the normal site container.
+   * This is important because the Events section
+   * needs more horizontal breathing room.
+   */
+  max-width: 1450px;
+
+  margin: 0 auto 9rem;
+
+  display: grid;
+
+  /*
+   * Images get slightly more room,
+   * while text receives substantially more
+   * usable width than before.
+   */
+  grid-template-columns: 1.15fr 1fr;
+
+  gap: 5rem;
+
+  align-items: center;
+}
+
+
+/* Last event */
+
+.section--events .event:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* EVENT MEDIA                                                            */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__media {
+  position: relative;
+
+  /*
+   * Slightly extend image group toward
+   * the left edge of the viewport.
+   */
+  margin-left: -5vw;
+
+  width: calc(100% + 5vw);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* REVERSED EVENT                                                         */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event--reverse {
+  direction: rtl;
+}
+
+
+/*
+ * Reset the direction inside the children
+ * so text/images themselves remain normal.
+ */
+
+.section--events .event--reverse > * {
+  direction: ltr;
+}
+
+
+/*
+ * For reversed events the image group
+ * moves toward the right edge.
+ */
+
+.section--events .event--reverse .event__media {
+  margin-left: 0;
+
+  margin-right: -5vw;
+
+  width: calc(100% + 5vw);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* THREE IMAGE LAYOUT                                                     */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__images {
+  display: grid;
+
+  /*
+   * Side images remain large.
+   * Middle image is only slightly larger.
+   */
+  grid-template-columns: 1fr 1.18fr 1fr;
+
+  gap: 0.9rem;
+
+  width: 100%;
+
+  align-items: center;
+
+  perspective: 1200px;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* IMAGE CARD                                                             */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__img {
+  position: relative;
+
+  margin: 0;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: var(--navy-800);
+
+  border: 1px solid rgba(243, 239, 228, 0.18);
+
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.24);
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+
+/* Side images */
+
+.section--events .event__img--1,
+.section--events .event__img--3 {
+  transform: scale(1);
+
+  z-index: 1;
+}
+
+
+/* Middle image */
+
+.section--events .event__img--2 {
+  transform: scale(1.08);
+
+  z-index: 3;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* IMAGE                                                                  */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__img img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  filter: saturate(0.88);
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s ease;
+}
+
+
+/* Image hover */
+
+.section--events .event__img:hover {
+  z-index: 5;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.32);
+}
+
+.section--events .event__img:hover img {
+  transform: scale(1.045);
+
+  filter: saturate(1);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* EVENT CONTENT                                                          */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__body {
+  width: 100%;
+
+  /*
+   * Previously this was only around 560px.
+   * This allows the paragraph to breathe.
+   */
+  max-width: 680px;
+
+  justify-self: start;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* EVENT META                                                             */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__meta {
+  margin: 0 0 0.75rem;
+
+  font-family: var(--font-mono);
+
+  font-size: 0.78rem;
+
+  line-height: 1.5;
+
+  color: var(--brass);
+
+  letter-spacing: 0.02em;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* EVENT TITLE                                                            */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__name {
+  margin: 0 0 0.55rem;
+
+  font-family: var(--font-display);
+
+  font-weight: 600;
+
+  font-size: clamp(
+    2.4rem,
+    3.8vw,
+    3.4rem
+  );
+
+  line-height: 1.02;
+
+  letter-spacing: -0.025em;
+
+  color: var(--paper);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* EVENT TAGLINE                                                          */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__tagline {
+  margin: 0 0 1.25rem;
+
+  font-family: var(--font-display);
+
+  font-size: 1.08rem;
+
+  line-height: 1.5;
+
+  font-style: italic;
+
+  color: rgba(199, 154, 70, 0.95);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* EVENT DESCRIPTION                                                      */
+/* ---------------------------------------------------------------------- */
+
+.section--events .body-text {
+  width: 100%;
+
+  max-width: 680px;
+
+  margin: 0;
+
+  color: rgba(243, 239, 228, 0.78);
+
+  font-size: 1rem;
+
+  line-height: 1.85;
+
+  letter-spacing: 0.005em;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* EVENT FACTS                                                            */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event__facts {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.6rem;
+
+  margin-top: 1.6rem;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.section--events .event__facts li {
+  position: relative;
+
+  padding-left: 1.25rem;
+
+  font-family: var(--font-mono);
+
+  font-size: 0.82rem;
+
+  line-height: 1.5;
+
+  color: rgba(243, 239, 228, 0.72);
+}
+
+
+.section--events .event__facts li::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0.52em;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--redline);
+}
+
+
+/* ====================================================================== */
+/* EVENT SCROLL REVEAL                                                    */
+/* ====================================================================== */
+
+/*
+ * Images enter from the left.
+ */
+
+.section--events .event__media {
+  opacity: 0;
+
+  transform: translateX(-90px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/*
+ * Content enters from the right.
+ */
+
+.section--events .event__body {
+  opacity: 0;
+
+  transform: translateX(90px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Activate */
+
+.section--events .event.is-visible .event__media {
+  opacity: 1;
+
+  transform: translateX(0);
+
+  transition-delay: 0s;
+}
+
+
+.section--events .event.is-visible .event__body {
+  opacity: 1;
+
+  transform: translateX(0);
+
+  transition-delay: 0.18s;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* Reverse reveal                                                         */
+/* ---------------------------------------------------------------------- */
+
+.section--events .event--reverse .event__media {
+  transform: translateX(90px);
+}
+
+.section--events .event--reverse .event__body {
+  transform: translateX(-90px);
+}
+
+
+.section--events .event--reverse.is-visible .event__media,
+.section--events .event--reverse.is-visible .event__body {
+  transform: translateX(0);
+}
+
+
+/* ====================================================================== */
+/* IMAGE MICRO-REVEAL                                                     */
+/* ====================================================================== */
+
+.section--events .event__img {
+  opacity: 0;
+
+  transform:
+    translateX(35px)
+    scale(0.97);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.section--events .event.is-visible .event__img {
+  opacity: 1;
+
+  transform:
+    translateX(0)
+    scale(1);
+}
+
+
+.section--events .event.is-visible .event__img--1 {
+  transition-delay: 0.12s;
+}
+
+
+.section--events .event.is-visible .event__img--2 {
+  transition-delay: 0.22s;
+
+  transform: scale(1.08);
+}
+
+
+.section--events .event.is-visible .event__img--3 {
+  transition-delay: 0.32s;
+}
+
+
+/* ====================================================================== */
+/* MEDIUM DESKTOP                                                         */
+/* ====================================================================== */
+
+@media (max-width: 1200px) {
+
+  .section--events .event {
+    max-width: 1100px;
+
+    grid-template-columns: 1.1fr 1fr;
+
+    gap: 3.5rem;
+  }
+
+  .section--events .event__media {
+    margin-left: -3vw;
+
+    width: calc(100% + 3vw);
+  }
+
+  .section--events .event--reverse .event__media {
+    margin-left: 0;
+
+    margin-right: -3vw;
+
+    width: calc(100% + 3vw);
+  }
+
+  .section--events .event__body {
+    max-width: 600px;
+  }
+
+}
+
+
+/* ====================================================================== */
+/* TABLET                                                                 */
+/* ====================================================================== */
+
+@media (max-width: 900px) {
+
+  .section--events {
+    padding-top: 5rem;
+
+    padding-bottom: 6rem;
+  }
+
+
+  .events__head {
+    margin-bottom: 4rem;
+
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+
+  /*
+   * Return to normal one-column layout.
+   */
+
+  .section--events .event,
+  .section--events .event--reverse {
+
+    max-width: 760px;
+
+    margin-bottom: 6rem;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 3rem;
+
     direction: ltr;
   }
+
+
+  /*
+   * Remove edge extension.
+   */
+
+  .section--events .event__media,
+  .section--events .event--reverse .event__media {
+
+    margin-left: 0;
+
+    margin-right: 0;
+
+    width: 100%;
+  }
+
+
+  .section--events .event__body {
+
+    max-width: 680px;
+
+    justify-self: start;
+  }
+
+
+  /*
+   * Smaller horizontal reveal distance.
+   */
+
+  .section--events .event__media {
+    transform: translateX(-60px);
+  }
+
+  .section--events .event__body {
+    transform: translateX(60px);
+  }
+
+
+  .section--events .event--reverse .event__media {
+    transform: translateX(60px);
+  }
+
+  .section--events .event--reverse .event__body {
+    transform: translateX(-60px);
+  }
+
 }
 
-.event__images {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 0.9rem;
-}
-.event__img { margin: 0; overflow: hidden; border: 1px solid var(--line); }
-.event__img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
-.event__img--2 { align-self: end; aspect-ratio: 3/4; }
-.event__img--2 img { aspect-ratio: 3/4; }
 
-.event__meta {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--terrain);
-  margin: 0 0 0.6rem;
-}
-.event__name {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
-  margin: 0 0 0.35rem;
-}
-.event__tagline {
-  color: var(--brass-dim);
-  font-style: italic;
-  font-family: var(--font-display);
-  margin: 0 0 1.1rem;
-}
-.event__facts {
-  margin-top: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.event__facts li {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  padding-left: 1.1rem;
-  position: relative;
-}
-.event__facts li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.5em;
-  width: 6px; height: 6px;
-  background: var(--terrain);
-  border-radius: 50%;
+/* ====================================================================== */
+/* MOBILE                                                                 */
+/* ====================================================================== */
+
+@media (max-width: 600px) {
+
+  .section--events {
+    padding-left: 1.2rem;
+
+    padding-right: 1.2rem;
+  }
+
+
+  .events__head {
+    padding-left: 0;
+
+    padding-right: 0;
+
+    margin-bottom: 3.5rem;
+  }
+
+
+  .section--events .event,
+  .section--events .event--reverse {
+
+    gap: 2.5rem;
+
+    margin-bottom: 5rem;
+  }
+
+
+  /*
+   * Three images remain visible,
+   * but are slightly tighter on phones.
+   */
+
+  .section--events .event__images {
+
+    grid-template-columns:
+      1fr
+      1.1fr
+      1fr;
+
+    gap: 0.4rem;
+  }
+
+
+  .section--events .event__img--2 {
+    transform: scale(1.05);
+  }
+
+
+  .section--events .event.is-visible .event__img--2 {
+    transform: scale(1.05);
+  }
+
+
+  .section--events .event__img img {
+    aspect-ratio: 4 / 5;
+  }
+
+
+  .section--events .event__name {
+
+    font-size: 2.35rem;
+
+    line-height: 1.02;
+  }
+
+
+  .section--events .event__tagline {
+    font-size: 1rem;
+  }
+
+
+  .section--events .body-text {
+
+    font-size: 0.95rem;
+
+    line-height: 1.8;
+  }
+
+
+  .section--events .event__facts li {
+
+    font-size: 0.75rem;
+  }
+
+
+  /*
+   * Smaller reveal distance on mobile.
+   */
+
+  .section--events .event__media,
+  .section--events .event--reverse .event__media {
+
+    transform: translateX(-40px);
+  }
+
+  .section--events .event__body,
+  .section--events .event--reverse .event__body {
+
+    transform: translateX(40px);
+  }
+
 }
 
-/* ---------------------------------------------------------------------- */
-/* Gallery                                                                 */
-/* ---------------------------------------------------------------------- */
+
+/* ====================================================================== */
+/* REDUCED MOTION                                                         */
+/* ====================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .section--events .event__media,
+  .section--events .event__body,
+  .section--events .event__img {
+
+    opacity: 1 !important;
+
+    transform: none !important;
+
+    transition: none !important;
+  }
+
+}
+
+/* =========================
+   3D GALLERY EFFECT
+   ========================= */
+
 .gallery {
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.6rem;
+  gap: 0.8rem;
+  padding: 0.5rem 0;
+
+  perspective: 1200px;
 }
-@media (max-width: 900px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 .gallery__item {
   position: relative;
   margin: 0;
   overflow: hidden;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: transform;
 }
+
+/* 3D hover */
+.gallery__item:hover {
+  transform:
+    translateY(-8px)
+    rotateX(4deg)
+    rotateY(-4deg)
+    scale(1.025);
+
+  box-shadow:
+    0 20px 35px rgba(14, 28, 46, 0.28),
+    0 8px 12px rgba(14, 28, 46, 0.15);
+
+  z-index: 5;
+}
+
+/* Image stays still — card itself moves in 3D */
 .gallery__item img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+
+  transform: translateZ(0);
+
+  transition:
+    filter 0.4s ease;
 }
-.gallery__item:hover img { transform: scale(1.06); }
+
+/* Slight visual depth */
+.gallery__item:hover img {
+  filter: brightness(1.04) contrast(1.02);
+}
+
+/* Caption */
 .gallery__item figcaption {
   position: absolute;
-  left: 0; right: 0; bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
   padding: 0.7rem 0.8rem;
+
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--paper);
-  background: linear-gradient(0deg, rgba(14,28,46,0.85), rgba(14,28,46,0));
+
+  background:
+    linear-gradient(
+      0deg,
+      rgba(14, 28, 46, 0.88),
+      rgba(14, 28, 46, 0)
+    );
+
   opacity: 0;
-  transition: opacity 0.3s ease;
+
+  transform: translateZ(20px);
+
+  transition:
+    opacity 0.3s ease;
 }
-.gallery__item:hover figcaption { opacity: 1; }
+
+.gallery__item:hover figcaption {
+  opacity: 1;
+}
+
+
+/* =========================
+   REDUCED MOTION
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery__item {
+    transition: none;
+  }
+
+  .gallery__item:hover {
+    transform: none;
+  }
+}
 
 /* ---------------------------------------------------------------------- */
 /* Sponsors — benchmark ledger                                            */
@@ -557,4 +1813,783 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   }
   .nav__links.is-open { transform: translateX(0); }
   .nav__brand-long { display: none; }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Leadership Notes                                                       */
+/* ---------------------------------------------------------------------- */
+
+.leadership-section {
+  background: var(--paper-dim);
+  overflow: hidden;
+}
+
+.leadership-section .section__head {
+  margin-bottom: 3rem;
+}
+
+.leadership-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Soft fade at both edges */
+.leadership-carousel::before,
+.leadership-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.leadership-carousel::before {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    var(--paper-dim),
+    rgba(233, 227, 211, 0)
+  );
+}
+
+.leadership-carousel::after {
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    var(--paper-dim),
+    rgba(233, 227, 211, 0)
+  );
+}
+
+.leadership-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  animation: leadership-scroll 36s linear infinite;
+}
+
+/* Pause while user is reading */
+.leadership-carousel:hover .leadership-track {
+  animation-play-state: paused;
+}
+
+.leader-card {
+  width: min(620px, 78vw);
+  min-height: 390px;
+
+  display: grid;
+  grid-template-columns: 210px 1fr;
+
+  background: var(--paper);
+
+  border: 1px solid var(--line);
+
+  flex-shrink: 0;
+
+  box-shadow:
+    0 12px 35px rgba(27, 36, 48, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.leader-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 18px 45px rgba(27, 36, 48, 0.14);
+}
+
+.leader-card__image {
+  height: 100%;
+  overflow: hidden;
+  background: var(--navy-800);
+}
+
+.leader-card__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter: saturate(0.82);
+
+  transition:
+    transform 0.6s ease,
+    filter 0.4s ease;
+}
+
+.leader-card:hover .leader-card__image img {
+  transform: scale(1.04);
+  filter: saturate(1);
+}
+
+.leader-card__content {
+  padding: 2.2rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.leader-card__role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  color: var(--terrain);
+
+  margin: 0 0 0.8rem;
+}
+
+.leader-card__name {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  line-height: 1.1;
+
+  margin: 0 0 0.35rem;
+
+  color: var(--ink);
+}
+
+.leader-card__designation {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+
+  color: var(--ink-soft);
+
+  margin: 0;
+}
+
+.leader-card__rule {
+  width: 42px;
+  height: 2px;
+
+  background: var(--brass);
+
+  margin: 1.4rem 0;
+}
+
+.leader-card__note {
+  font-family: var(--font-body);
+
+  font-size: 0.94rem;
+  line-height: 1.7;
+
+  color: var(--ink-soft);
+
+  margin: 0;
+
+  max-width: 45ch;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Continuous carousel animation                                         */
+/* ---------------------------------------------------------------------- */
+
+@keyframes leadership-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(
+      calc(-50% - 0.75rem)
+    );
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive leadership cards                                            */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+  .leadership-track {
+    gap: 1rem;
+    animation-duration: 30s;
+  }
+
+  .leader-card {
+    width: 82vw;
+    min-height: 330px;
+
+    grid-template-columns: 135px 1fr;
+  }
+
+  .leader-card__content {
+    padding: 1.5rem;
+  }
+
+  .leader-card__name {
+    font-size: 1.4rem;
+  }
+
+  .leader-card__note {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .leadership-carousel::before,
+  .leadership-carousel::after {
+    width: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .leader-card {
+    width: 88vw;
+
+    grid-template-columns: 105px 1fr;
+  }
+
+  .leader-card__content {
+    padding: 1.25rem;
+  }
+
+  .leader-card__role {
+    font-size: 0.65rem;
+  }
+
+  .leader-card__name {
+    font-size: 1.2rem;
+  }
+
+  .leader-card__designation {
+    font-size: 0.65rem;
+  }
+
+  .leader-card__rule {
+    margin: 1rem 0;
+  }
+
+  .leader-card__note {
+    font-size: 0.8rem;
+  }
+}
+
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .leadership-track {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   HORIZONTAL SCROLL REVEAL
+   ========================================================= */
+
+/* General section heading */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+/* Images start outside from the left */
+
+.section--events .event__media {
+  opacity: 0;
+  transform: translateX(-100px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Text starts outside from the right */
+
+.section--events .event__body {
+  opacity: 0;
+  transform: translateX(100px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* When event becomes visible */
+
+.section--events .event.is-visible .event__media {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.section--events .event.is-visible .event__body {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* Images arrive slightly before text */
+
+.section--events .event.is-visible .event__media {
+  transition-delay: 0s;
+}
+
+.section--events .event.is-visible .event__body {
+  transition-delay: 0.18s;
+}
+
+
+/* =========================================================
+   ALTERNATING EVENTS
+   ========================================================= */
+
+/* For reversed event:
+   text enters from LEFT
+   images enter from RIGHT
+*/
+
+.section--events .event--reverse .event__media {
+  transform: translateX(100px);
+}
+
+.section--events .event--reverse .event__body {
+  transform: translateX(-100px);
+}
+
+.section--events .event--reverse.is-visible .event__media,
+.section--events .event--reverse.is-visible .event__body {
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   IMAGE SEQUENCE
+   ========================================================= */
+
+.section--events .event__img {
+  opacity: 0;
+  transform: translateX(35px) scale(0.97);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section--events .event.is-visible .event__img {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.section--events .event.is-visible .event__img--1 {
+  transition-delay: 0.12s;
+}
+
+.section--events .event.is-visible .event__img--2 {
+  transition-delay: 0.22s;
+}
+
+.section--events .event.is-visible .event__img--3 {
+  transition-delay: 0.32s;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .section--events .event__media,
+  .section--events .event--reverse .event__media {
+    transform: translateX(-60px);
+  }
+
+  .section--events .event__body,
+  .section--events .event--reverse .event__body {
+    transform: translateX(60px);
+  }
+
+  .section--events .event.is-visible .event__media,
+  .section--events .event.is-visible .event__body {
+    transform: translateX(0);
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal,
+  .section--events .event__media,
+  .section--events .event__body,
+  .section--events .event__img {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+}
+
+/* =========================================================
+   SECTION HEADING SCROLL REVEAL
+   ========================================================= */
+
+.section__head {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Small eyebrow appears first */
+.section__head .eyebrow {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Main heading */
+.section__head .section__title {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s ease 0.12s,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+
+/* Activated */
+
+.section__head.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section__head.is-visible .eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section__head.is-visible .section__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   SPECIAL CASE — VISION / MISSION
+   ========================================================= */
+
+.section__head .section__subtitle {
+  opacity: 0;
+  transform: translateY(16px);
+
+  transition:
+    opacity 0.8s ease 0.25s,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+.section__head.is-visible .section__subtitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .section__head,
+  .section__head .eyebrow,
+  .section__head .section__title,
+  .section__head .section__subtitle {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+}
+
+/* =========================================================
+   ABOUT — IMAGE / MAP CONTAINER FIX
+   ========================================================= */
+
+.about__visual {
+  position: relative;
+
+  width: 100%;
+
+  /* Give image + map a proper visual height */
+  aspect-ratio: 4 / 3;
+
+  min-height: 420px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   ORIGINAL IMAGE
+   ========================================================= */
+
+.about__visual .about__photo {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border: 1px solid var(--line);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   MAP
+   ========================================================= */
+
+.about__visual .about__map {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 2;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.55s ease,
+    visibility 0s linear 0.55s;
+}
+
+
+/* =========================================================
+   MAP ACTIVE
+   ========================================================= */
+
+.about__visual.is-map-active .about__photo {
+  opacity: 0;
+
+  transform: scale(1.025);
+}
+
+
+.about__visual.is-map-active .about__map {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transition:
+    opacity 0.55s ease,
+    visibility 0s linear 0s;
+}
+
+
+/* =========================================================
+   SGE BUTTON
+   ========================================================= */
+
+/*
+   IMPORTANT:
+   These values override the OLD:
+
+   bottom: -28px;
+   left: -28px;
+
+   from the original .about__badge rule.
+*/
+
+.about__visual .about__badge {
+
+  position: absolute !important;
+
+  left: 1.2rem !important;
+  bottom: 1.2rem !important;
+
+  top: auto !important;
+  right: auto !important;
+
+  z-index: 1000 !important;
+
+  width: 72px !important;
+  height: 72px !important;
+
+  margin: 0 !important;
+  padding: 8px !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(243, 239, 228, 0.7);
+
+  border-radius: 50%;
+
+  background: var(--paper);
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 24px rgba(14, 28, 46, 0.30);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* Logo inside button */
+
+.about__visual .about__badge img {
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  border-radius: 50%;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
+
+.about__visual .about__badge:hover {
+
+  transform: translateY(-3px) scale(1.06);
+
+  border-color: var(--brass);
+
+  box-shadow:
+    0 14px 32px rgba(14, 28, 46, 0.38);
+}
+
+
+.about__visual .about__badge:hover img {
+
+  transform: rotate(8deg) scale(1.04);
+}
+
+
+/* =========================================================
+   MAP ACTIVE BUTTON
+   ========================================================= */
+
+.about__visual.is-map-active .about__badge {
+
+  background: var(--navy-900);
+
+  border-color: var(--brass);
+
+  z-index: 1000 !important;
+}
+
+
+.about__visual.is-map-active .about__badge img {
+
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   LEAFLET
+   ========================================================= */
+
+.about__visual .leaflet-container {
+
+  position: absolute !important;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+}
+
+
+/*
+   Leaflet controls must stay BELOW the SGE button.
+*/
+
+.about__visual .leaflet-control-container {
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .about__visual {
+
+    aspect-ratio: 4 / 3;
+
+    min-height: 300px;
+  }
+
+
+  .about__visual .about__badge {
+
+    left: 0.8rem !important;
+    bottom: 0.8rem !important;
+
+    width: 60px !important;
+    height: 60px !important;
+
+    padding: 6px !important;
+  }
+
 }

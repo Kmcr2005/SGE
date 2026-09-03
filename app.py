@@ -20,6 +20,7 @@ SITE = {
 NAV_LINKS = [
     ("About", "#about"),
     ("Vision & Mission", "#vision"),
+    ("Leadership", "#leadership"),
     ("Events", "#events"),
     ("Gallery", "#gallery"),
     ("Sponsors", "#sponsors"),
@@ -64,9 +65,53 @@ MISSION_TEXT = (
     "between classroom learning and real-world geospatial applications, preparing students to "
     "tackle current challenges using geospatial technologies. SGE remains dedicated to building "
     "a community of skilled, creative, and socially responsible geospatial professionals who can "
-    "make meaningful contributions to technological progress, sustainable development, and the "
-    "broader geospatial community."
+    "make meaningful contributions to the geospatial community."
 )
+
+LEADERSHIP = [
+    {
+        "role": "Director's Note",
+        "name": "Dr. R Vidhya",
+        "designation": "Director & Professor, Institute of Remote Sensing",
+        "image": "director.png",
+        "note": (
+            " 'The Society of Geoinformatics Engineers (SGE), established in 2004, has evolved into a "
+            "vibrant platform for innovation, learning, collaboration, and professional exposure in "
+            "Geoinformatics. As geospatial technologies continue to play an increasingly important"
+            "role in national development and decision-making, SGE provides students with"
+            "opportunities to learn, explore, and contribute to this dynamic field"
+            "I encourage every student to dream big, embrace"
+            "challenges, and pursue excellence with dedication, carrying forward SGE legacy of"
+            "learning, innovation, and meaningful contribution to society.' "
+        ),
+    },
+    {
+        "role": "President's Note",
+        "name": "Dr. Shanmugam",
+        "designation": "President, SGE",
+        "image": "president.jpeg",
+        "note": (
+            " 'SGE is a community driven by curiosity, collaboration and a passion "
+            "for geospatial technology. Our aim is to create opportunities for "
+            "students to learn beyond the classroom, exchange ideas and build "
+            "solutions that connect technology with real-world challenges.' "
+        ),
+    },
+    {
+        "role": "Treasurer's Note",
+        "name": "Dr. Navamunniyamal",
+        "designation": "Treasurer, SGE",
+        "image": "treasurer.jpeg",
+        "note": (
+            " 'Every successful initiative at SGE is made possible through the "
+            "collective effort of our students, faculty, alumni and partners. "
+            "We remain committed to supporting meaningful events and activities "
+            "that contribute to the growth of the geospatial community.' "
+        ),
+    },
+]
+
+
 
 EVENTS = [
     {
@@ -86,8 +131,9 @@ EVENTS = [
         ),
         "facts": ["20+ tech & non-tech events", "\u20b9120,000 prize pool", "Open to all colleges in India"],
         "images": [
-            {"src": "geohorizon_poster.jpg", "caption": "GEOHORIZON \u201826 \u2014 inter-college technical symposium"},
+            {"src": "GH.jpg", "caption": "GEOHORIZON \u201826 \u2014 inter-college technical symposium"},
             {"src": "geohorizon_inaugural.jpeg", "caption": "Inaugural session of GEOHORIZON at Anna University"},
+            {"src": "GH1.jpg", "caption": "Inaugural session of GEOHORIZON at Anna University"}
         ],
     },
     {
@@ -107,8 +153,9 @@ EVENTS = [
         ),
         "facts": ["Technical sessions & expert talks", "Student competitions", "Run with National Space Week"],
         "images": [
-            {"src": "celestia_banner.jpeg", "caption": "CELESTIA \u201925 held alongside National Space Week"},
+            {"src": "celestia.jpg", "caption": "CELESTIA \u201925 held alongside National Space Week"},
             {"src": "celestia_session.jpeg", "caption": "Technical session in progress during CELESTIA \u201925"},
+            {"src": "celestia2.jpg", "caption": "Technical session in progress during CELESTIA \u201925"}
         ],
     },
     {
@@ -117,8 +164,8 @@ EVENTS = [
         "tagline": "An outreach programme for the next generation",
         "meta": "Campus & school outreach initiative",
         "text": (
-            "SPACE WEEK is an outreach program designed to raise awareness and inspire "
-            "enthusiasm for space science, satellite technology, Earth observation, and their "
+            "SPACE WEEK is an outreach program designed to raise awareness and inspire enthusiasm"
+            "for space science, satellite technology, Earth observation, and their "
             "various geospatial applications. This initiative gives students the chance to "
             "understand the importance of space technology in fields such as environmental "
             "monitoring, disaster management, agriculture, urban planning, climate studies, and "
@@ -131,6 +178,7 @@ EVENTS = [
         "images": [
             {"src": "space_on_wheels.jpeg", "caption": "ISRO 'Space on Wheels' exhibition bus at the campus"},
             {"src": "isro_models.jpeg", "caption": "ISRO launch vehicle models on display, National Remote Sensing Centre"},
+            {"src": "space week.jpg", "caption": "ISRO launch vehicle models on display, National Remote Sensing Centre"}
         ],
     },
 ]
@@ -168,6 +216,7 @@ def index():
         about_text=ABOUT_TEXT,
         vision_text=VISION_TEXT,
         mission_text=MISSION_TEXT,
+        leadership = LEADERSHIP,
         events=EVENTS,
         gallery=GALLERY,
         sponsors=SPONSORS,
