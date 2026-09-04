@@ -14,16 +14,33 @@
   onScroll();
 
   if (toggle && links) {
-    toggle.addEventListener("click", function () {
+
+    toggle.addEventListener("click", function (event) {
+
+      event.preventDefault();
+      event.stopPropagation();
+
       var open = links.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+
+      toggle.setAttribute(
+        "aria-expanded",
+        open ? "true" : "false"
+      );
+
     });
+
     links.querySelectorAll("a").forEach(function (a) {
+
       a.addEventListener("click", function () {
+
         links.classList.remove("is-open");
+
         toggle.setAttribute("aria-expanded", "false");
+
       });
+
     });
+
   }
 })();
 
