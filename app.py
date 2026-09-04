@@ -115,72 +115,67 @@ LEADERSHIP = [
 
 EVENTS = [
     {
-        "code": "01",
-        "name": "GEOHORIZON",
-        "tagline": "GEOVERSE: Connecting Data, Intelligence and Innovation",
-        "meta": "Inter-college technical symposium \u00b7 March 14\u201316, 2026",
-        "text": (
-            "GEOHORIZON is a key event organised by the Society of Geoinformatics Engineers "
-            "(SGE), part of the Institute of Remote Sensing, College of Engineering Guindy, "
-            "Anna University. This event provides an exciting platform for students to engage "
-            "with the growing and diverse areas of Geoinformatics, Remote Sensing, GIS, Earth "
-            "Observation, and related technologies. Through a mix of technical activities, "
-            "workshops, competitions, expert talks, and knowledge-sharing sessions, GEOHORIZON "
-            "helps students refine their technical skills, exchange ideas, and discover new "
-            "applications of geospatial technologies."
-        ),
-        "facts": ["20+ tech & non-tech events", "\u20b9120,000 prize pool", "Open to all colleges in India"],
+        "title": "GEOHORIZON",
+        "subtitle": "Inaugural Edition",
+        "date": "2025",
+        "description": "A flagship SGE event bringing together geospatial professionals, students, researchers and industry experts.",
         "images": [
-            {"src": "GH.jpg", "caption": "GEOHORIZON \u201826 \u2014 inter-college technical symposium"},
-            {"src": "geohorizon_inaugural.jpeg", "caption": "Inaugural session of GEOHORIZON at Anna University"},
-            {"src": "GH1.jpg", "caption": "Inaugural session of GEOHORIZON at Anna University"}
-        ],
+            {
+                "src": "geohorizon_1.jpg",
+                "caption": "GEOHORIZON event"
+            },
+            {
+                "src": "geohorizon_2.jpeg",
+                "caption": "GEOHORIZON inaugural session"
+            },
+            {
+                "src": "geohorizon_3.jpg",
+                "caption": "GEOHORIZON"
+            }
+        ]
     },
+
     {
-        "code": "02",
-        "name": "CELESTIA",
-        "tagline": "Where space science meets geospatial technology",
-        "meta": "Held alongside National Space Week \u00b7 October 14\u201315",
-        "text": (
-            "CELESTIA is a student-focused event organised by the Society of Geoinformatics "
-            "Engineers (SGE), bringing together the exciting fields of space science, Earth "
-            "observation, Remote Sensing, and Geospatial Technology. The event seeks to raise "
-            "awareness and spark interest among students about the role of space and satellite "
-            "technologies in solving real-world problems. Through technical sessions, expert "
-            "discussions, competitions, and engaging activities, CELESTIA allows students to "
-            "learn, collaborate, and explore new possibilities in the space and geospatial "
-            "sectors."
-        ),
-        "facts": ["Technical sessions & expert talks", "Student competitions", "Run with National Space Week"],
+        "title": "CELESTIA",
+        "subtitle": "Astronomy & Space Science",
+        "date": "2025",
+        "description": "An astronomy-focused event exploring space science, observation and the growing role of geospatial technologies.",
         "images": [
-            {"src": "celestia.jpg", "caption": "CELESTIA \u201925 held alongside National Space Week"},
-            {"src": "celestia_session.jpeg", "caption": "Technical session in progress during CELESTIA \u201925"},
-            {"src": "celestia2.jpg", "caption": "Technical session in progress during CELESTIA \u201925"}
-        ],
+            {
+                "src": "celestia_1.jpg",
+                "caption": "CELESTIA"
+            },
+            {
+                "src": "celestia_2.jpeg",
+                "caption": "CELESTIA session"
+            },
+            {
+                "src": "celestia_3.jpg",
+                "caption": "CELESTIA event"
+            }
+        ]
     },
+
     {
-        "code": "03",
-        "name": "SPACE WEEK",
-        "tagline": "An outreach programme for the next generation",
-        "meta": "Campus & school outreach initiative",
-        "text": (
-            "SPACE WEEK is an outreach program designed to raise awareness and inspire enthusiasm"
-            "for space science, satellite technology, Earth observation, and their "
-            "various geospatial applications. This initiative gives students the chance to "
-            "understand the importance of space technology in fields such as environmental "
-            "monitoring, disaster management, agriculture, urban planning, climate studies, and "
-            "navigation. Through awareness sessions, expert discussions, educational activities, "
-            "and interactive programs, SPACE WEEK encourages students to explore beyond "
-            "traditional learning and discover the opportunities in the space and geospatial "
-            "industry."
-        ),
-        "facts": ["ISRO 'Space on Wheels' exhibition bus", "School outreach sessions", "Hands-on ISRO exhibits"],
+        "title": "SPACE WEEK",
+        "subtitle": "World Space Week",
+        "date": "2025",
+        "description": "A celebration of space science and exploration featuring educational activities, exhibits and outreach programmes.",
         "images": [
-            {"src": "space_on_wheels.jpeg", "caption": "ISRO 'Space on Wheels' exhibition bus at the campus"},
-            {"src": "isro_models.jpeg", "caption": "ISRO launch vehicle models on display, National Remote Sensing Centre"},
-            {"src": "space week.jpg", "caption": "ISRO launch vehicle models on display, National Remote Sensing Centre"}
-        ],
-    },
+            {
+                "src": "spaceweek_1.jpeg",
+                "caption": "Space on Wheels"
+            },
+            {
+                "src": "spaceweek_2.jpeg",
+                "caption": "ISRO models"
+            },
+            {
+                "src": "spaceweek_3.jpg",
+                "caption": "Space Week"
+            }
+        ]
+    }
 ]
 
 GALLERY = [
