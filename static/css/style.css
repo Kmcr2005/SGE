@@ -3826,14 +3826,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 
   .gallery-page {
-    grid-template-columns: 1fr;
-
-    gap: 0.6rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
   }
 
 
   .gallery-page .gallery__item {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1 / 1;
   }
 
 
@@ -3842,6 +3841,257 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     height: 34px;
 
     font-size: 0.7rem;
+  }
+
+}
+
+
+/* ============================================================
+   NOTES FROM SGE — MOBILE CARD FIX
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  .leadership-section {
+    overflow: hidden;
+  }
+
+  .leadership-carousel {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .leadership-track {
+    gap: 0.8rem;
+  }
+
+  /* Compact leadership card */
+  .leader-card {
+    width: 88vw;
+
+    /*
+     * Do NOT let the content determine an enormous height.
+     */
+    min-height: 0;
+    height: 300px;
+
+    /*
+     * Image + text
+     */
+    grid-template-columns: 105px minmax(0, 1fr);
+
+    overflow: hidden;
+  }
+
+  /* Image */
+  .leader-card__image {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .leader-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Content */
+  .leader-card__content {
+    min-width: 0;
+    min-height: 0;
+
+    padding: 1.1rem 1rem;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Role */
+  .leader-card__role {
+    font-size: 0.62rem;
+    line-height: 1.25;
+
+    margin-bottom: 0.5rem;
+  }
+
+  /* Name */
+  .leader-card__name {
+    font-size: 1.2rem;
+    line-height: 1.1;
+
+    margin-bottom: 0.25rem;
+  }
+
+  /* Designation */
+  .leader-card__designation {
+    font-size: 0.62rem;
+    line-height: 1.3;
+  }
+
+  /* Gold divider */
+  .leader-card__rule {
+    width: 32px;
+    height: 2px;
+
+    margin: 0.8rem 0;
+  }
+
+  /* Note text */
+  .leader-card__note {
+    font-size: 0.76rem;
+    line-height: 1.5;
+
+    max-width: none;
+
+    /*
+     * Prevent a long note from making the card taller.
+     */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+    line-clamp: 7;
+  }
+
+  /* Smaller edge fades */
+  .leadership-carousel::before,
+  .leadership-carousel::after {
+    width: 25px;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+   ============================================================ */
+
+@media (max-width: 380px) {
+
+  .leader-card {
+    width: 90vw;
+    height: 280px;
+
+    grid-template-columns: 90px minmax(0, 1fr);
+  }
+
+  .leader-card__content {
+    padding: 0.9rem 0.8rem;
+  }
+
+  .leader-card__name {
+    font-size: 1.08rem;
+  }
+
+  .leader-card__note {
+    font-size: 0.72rem;
+    line-height: 1.45;
+
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
+  }
+}
+
+/* =========================================================
+   ABOUT — MOBILE REFINEMENT
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .section__grid--about {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about__figure {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  /* Keep the About section inside the viewport */
+  #about {
+    overflow: hidden;
+  }
+
+  /* Text should not create horizontal overflow */
+  #about .section__col {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #about .section__title {
+    max-width: 100%;
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    line-height: 1.05;
+  }
+
+  #about .body-text {
+    max-width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  /* Image container */
+  #about .about__visual {
+    width: 100%;
+    height: 260px;
+    min-height: 0;
+    aspect-ratio: auto;
+
+    overflow: hidden;
+  }
+
+  /* Building photograph */
+  #about .about__photo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    display: block;
+  }
+
+  /* Keep badge inside image */
+  #about .about__visual .about__badge {
+    left: 0.75rem !important;
+    bottom: 0.75rem !important;
+
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  #about .figure-caption {
+    margin-top: 0.75rem;
+    font-size: 0.65rem;
+    line-height: 1.45;
+  }
+
+}
+
+
+/* Smaller phones */
+@media (max-width: 380px) {
+
+  #about .about__visual {
+    height: 225px;
+  }
+
+  #about .section__title {
+    font-size: 2rem;
+  }
+
+  #about .body-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
   }
 
 }
