@@ -479,20 +479,84 @@
 </section>
 
   <!-- GALLERY -->
-  <section class="section section--dark" id="gallery">
-    <div class="section__head">
-      <p class="eyebrow eyebrow--light">From the field</p>
-      <h2 class="section__title section__title--light">Gallery</h2>
+ <!-- GALLERY -->
+<section class="section section--dark" id="gallery">
+
+  <div class="section__head">
+    <p class="eyebrow eyebrow--light">From the field</p>
+    <h2 class="section__title section__title--light">Gallery</h2>
+  </div>
+
+  <div class="gallery-carousel">
+
+    <!-- WEST -->
+    <button
+      class="gallery-arrow gallery-arrow--west"
+      id="gallery-prev"
+      type="button"
+      aria-label="Previous gallery page"
+    >
+      W
+    </button>
+
+
+    <!-- GALLERY VIEWPORT -->
+    <div class="gallery-viewport">
+
+      <div class="gallery-track" id="gallery-track">
+
+        {% for item in gallery %}
+
+          {% if loop.index0 % 4 == 0 %}
+          <div class="gallery-page">
+          {% endif %}
+
+            <figure class="gallery__item">
+
+              <img
+                src="{{ url_for('static', filename='images/' + item.src) }}"
+                alt="{{ item.caption }}"
+                loading="lazy"
+              >
+
+              <figcaption>
+                {{ item.caption }}
+              </figcaption>
+
+            </figure>
+
+          {% if loop.index0 % 4 == 3 or loop.last %}
+          </div>
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
     </div>
-    <div class="gallery">
-      {% for item in gallery %}
-      <figure class="gallery__item">
-        <img src="{{ url_for('static', filename='images/' + item.src) }}" alt="{{ item.caption }}" loading="lazy">
-        <figcaption>{{ item.caption }}</figcaption>
-      </figure>
-      {% endfor %}
-    </div>
-  </section>
+
+
+    <!-- EAST -->
+    <button
+      class="gallery-arrow gallery-arrow--east"
+      id="gallery-next"
+      type="button"
+      aria-label="Next gallery page"
+    >
+      E
+    </button>
+
+  </div>
+
+
+  <!-- PAGE INDICATORS -->
+  <div
+    class="gallery-pagination"
+    id="gallery-pagination"
+    aria-label="Gallery pages"
+  ></div>
+
+</section>
 
   <!-- SPONSORS -->
   <section class="section section--paper" id="sponsors">

@@ -688,3 +688,252 @@
 
 
 })();
+
+/* ====================================================================== */
+/* GALLERY PAGE CAROUSEL                                                  */
+/* ====================================================================== */
+
+(function () {
+
+  const track = document.getElementById("gallery-track");
+  const prevButton = document.getElementById("gallery-prev");
+  const nextButton = document.getElementById("gallery-next");
+  const pagination = document.getElementById("gallery-pagination");
+
+  if (!track || !prevButton || !nextButton) {
+    return;
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Find actual gallery pages                                      */
+  /* -------------------------------------------------------------- */
+
+  const pages = Array.from(
+    track.querySelectorAll(".gallery-page")
+  );
+
+  if (!pages.length) {
+    return;
+  }
+
+
+  let currentPage = 0;
+
+
+  /* -------------------------------------------------------------- */
+  /* Create page indicators                                         */
+  /* -------------------------------------------------------------- */
+
+  function createPagination() {
+
+    if (!pagination) {
+      return;
+    }
+
+    pagination.innerHTML = "";
+
+    pages.forEach(function (_, index) {
+
+      const dot = document.createElement("button");
+
+      dot.type = "button";
+
+      dot.className = "gallery-pagination__dot";
+
+      dot.setAttribute(
+        "aria-label",
+        "Go to gallery page " + (index + 1)
+      );
+
+      dot.addEventListener("click", function () {
+
+        currentPage = index;
+
+        updateGallery();
+
+      });
+
+      pagination.appendChild(dot);
+
+    });
+
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Update page indicators                                         */
+  /* -------------------------------------------------------------- */
+
+  function updatePagination() {
+
+    if (!pagination) {
+      return;
+    }
+
+    const dots = pagination.querySelectorAll(
+      ".gallery-pagination__dot"
+    );
+
+    dots.forEach(function (dot, index) {
+
+      dot.classList.toggle(
+        "is-active",
+        index === currentPage
+      );
+
+    });
+
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* Move gallery to current page                                   */
+  /* -------------------------------------------------------------- */
+
+  function updateGallery() {
+
+    /*
+     * Each .gallery-page is exactly 100%
+     * of the gallery viewport.
+     */
+
+    const offset = currentPage * 100;
+
+    track.style.transform =
+      "translateX(-" + offset + "%)";
+
+
+    /* ------------------------------------------------------------ */
+    /* Button states                                                */
+    /* ------------------------------------------------------------ */
+
+    prevButton.disabled =
+      currentPage === 0;
+
+    nextButton.disabled =
+      currentPage === pages.length - 1;
+
+
+    /* ------------------------------------------------------------ */
+    /* Dots                                                         */
+    /* ------------------------------------------------------------ */
+
+    updatePagination();
+
+  }
+
+
+  /* -------------------------------------------------------------- */
+  /* WEST BUTTON                                                    */
+  /* -------------------------------------------------------------- */
+
+  prevButton.addEventListener(
+    "click",
+    function () {
+
+      if (currentPage > 0) {
+
+        currentPage--;
+
+        updateGallery();
+
+      }
+
+    }
+  );
+
+
+  /* -------------------------------------------------------------- */
+  /* EAST BUTTON                                                    */
+  /* -------------------------------------------------------------- */
+
+  nextButton.addEventListener(
+    "click",
+    function () {
+
+      if (currentPage < pages.length - 1) {
+
+        currentPage++;
+
+        updateGallery();
+
+      }
+
+    }
+  );
+
+
+  /* -------------------------------------------------------------- */
+  /* Keyboard navigation                                            */
+  /* -------------------------------------------------------------- */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      const gallery =
+        document.getElementById("gallery");
+
+      if (!gallery) {
+        return;
+      }
+
+
+      const rect =
+        gallery.getBoundingClientRect();
+
+
+      const visible =
+        rect.top < window.innerHeight &&
+        rect.bottom > 0;
+
+
+      if (!visible) {
+        return;
+      }
+
+
+      /* WEST */
+
+      if (event.key === "ArrowLeft") {
+
+        if (currentPage > 0) {
+
+          currentPage--;
+
+          updateGallery();
+
+        }
+
+      }
+
+
+      /* EAST */
+
+      if (event.key === "ArrowRight") {
+
+        if (currentPage < pages.length - 1) {
+
+          currentPage++;
+
+          updateGallery();
+
+        }
+
+      }
+
+    }
+  );
+
+
+  /* -------------------------------------------------------------- */
+  /* Initial setup                                                  */
+  /* -------------------------------------------------------------- */
+
+  createPagination();
+
+  updateGallery();
+
+
+})();

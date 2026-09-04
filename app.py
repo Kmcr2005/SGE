@@ -228,7 +228,15 @@ GALLERY = [
     {"src": "spaceweek_expert.jpeg", "caption": "Expert interaction with school students"},
     {"src": "spaceweek_students.jpeg", "caption": "School students at Space Week outreach"},
     {"src": "irs_building.jpeg", "caption": "Institute of Remote Sensing, CEG"},
-    {"src": "celestia_banner.jpeg", "caption": "CELESTIA '25, National Space Week"},
+    {"src": "trimble_meet.jpg", "caption": "Trimble Team Meet"},
+    {"src": "SGE_inaugration.jpg", "caption": "SGE Inaugration 2025"},
+    {"src": "mapjam.jpg", "caption": "Mapjam Event - GeoHorizon'26"},
+    {"src": "lifeskill_workshop.jpg", "caption": "Lifeskill Workshop - GeoHorizon'26"},
+    {"src": "ideathon.jpg", "caption": "Ideathon Event - GeoHorizon'26"},
+    {"src": "healthGIS_workshop.jpg", "caption": "HealthGIS Workshop"},
+    {"src": "geonex.jpg", "caption": "GeoNex Hackathon - GeoHorizon'26"},
+    {"src": "geonex_panel.jpg", "caption": "GeoNex Hackathon Judges"},
+    {"src": "celestia_event.jpg", "caption": "Celestia'25 events session"}
 ]
 
 SPONSORS = [
