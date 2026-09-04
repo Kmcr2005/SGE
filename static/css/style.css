@@ -814,11 +814,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
-/* Contour background                                                     */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
+/* CONTOUR BACKGROUND                                                     */
+/* ====================================================================== */
 
-.events__contours {
+.section--events .events__contours {
   position: absolute;
 
   inset: 0;
@@ -834,17 +834,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
-/* Events heading                                                         */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
+/* EVENTS HEADING                                                         */
+/* ====================================================================== */
 
-.section--events .section__head {
+.section--events .events__head {
   position: relative;
 
   z-index: 2;
-}
 
-.events__head {
   max-width: 1450px;
 
   margin: 0 auto 5.5rem;
@@ -852,9 +850,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
-
-
-/* Light heading */
 
 .section--events .eyebrow--light {
   color: var(--brass);
@@ -865,32 +860,25 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 /* EVENT CONTAINER                                                        */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 
 .section--events .event {
   position: relative;
 
   z-index: 2;
 
-  /*
-   * Wider than the normal site container.
-   * This is important because the Events section
-   * needs more horizontal breathing room.
-   */
+  width: calc(100% - 3rem);
   max-width: 1450px;
 
   margin: 0 auto 9rem;
 
   display: grid;
 
-  /*
-   * Images get slightly more room,
-   * while text receives substantially more
-   * usable width than before.
-   */
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(0, 1fr);
 
   gap: 5rem;
 
@@ -905,68 +893,50 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
-/* EVENT MEDIA                                                            */
-/* ---------------------------------------------------------------------- */
-
-.section--events .event__media {
-  position: relative;
-
-  /*
-   * Slightly extend image group toward
-   * the left edge of the viewport.
-   */
-  margin-left: -5vw;
-
-  width: calc(100% + 5vw);
-}
-
-
-/* ---------------------------------------------------------------------- */
-/* REVERSED EVENT                                                         */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
+/* REVERSED EVENT                                                        */
+/* ====================================================================== */
 
 .section--events .event--reverse {
   direction: rtl;
 }
-
-
-/*
- * Reset the direction inside the children
- * so text/images themselves remain normal.
- */
 
 .section--events .event--reverse > * {
   direction: ltr;
 }
 
 
-/*
- * For reversed events the image group
- * moves toward the right edge.
- */
+/* ====================================================================== */
+/* EVENT MEDIA                                                            */
+/* ====================================================================== */
+
+.section--events .event__media {
+  position: relative;
+
+  width: calc(100% + 5vw);
+
+  margin-left: -5vw;
+}
 
 .section--events .event--reverse .event__media {
   margin-left: 0;
-
   margin-right: -5vw;
 
   width: calc(100% + 5vw);
 }
 
 
-/* ---------------------------------------------------------------------- */
-/* THREE IMAGE LAYOUT                                                     */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
+/* THREE IMAGE GRID                                                       */
+/* ====================================================================== */
 
 .section--events .event__images {
   display: grid;
 
-  /*
-   * Side images remain large.
-   * Middle image is only slightly larger.
-   */
-  grid-template-columns: 1fr 1.18fr 1fr;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1.18fr)
+    minmax(0, 1fr);
 
   gap: 0.9rem;
 
@@ -978,16 +948,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 /* IMAGE CARD                                                             */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 
 .section--events .event__img {
   position: relative;
 
-  margin: 0;
-
   width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  margin: 0;
 
   overflow: hidden;
 
@@ -1006,6 +978,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
+/* Center image */
+
+.section--events .event__img--2 {
+  aspect-ratio: 3 / 4;
+
+  transform: scale(1.08);
+
+  z-index: 3;
+}
+
+
 /* Side images */
 
 .section--events .event__img--1,
@@ -1016,18 +999,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* Middle image */
-
-.section--events .event__img--2 {
-  transform: scale(1.08);
-
-  z-index: 3;
-}
-
-
-/* ---------------------------------------------------------------------- */
-/* IMAGE                                                                  */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
+/* IMAGE ITSELF                                                           */
+/* ====================================================================== */
 
 .section--events .event__img img {
   display: block;
@@ -1035,9 +1009,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   width: 100%;
   height: 100%;
 
-  aspect-ratio: 4 / 5;
+  max-width: none;
 
   object-fit: cover;
+
+  object-position: center;
 
   filter: saturate(0.88);
 
@@ -1047,7 +1023,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* Image hover */
+/* ====================================================================== */
+/* IMAGE HOVER                                                            */
+/* ====================================================================== */
 
 .section--events .event__img:hover {
   z-index: 5;
@@ -1063,26 +1041,22 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 /* EVENT CONTENT                                                          */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 
 .section--events .event__body {
   width: 100%;
 
-  /*
-   * Previously this was only around 560px.
-   * This allows the paragraph to breathe.
-   */
   max-width: 680px;
 
   justify-self: start;
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 /* EVENT META                                                             */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 
 .section--events .event__meta {
   margin: 0 0 0.75rem;
@@ -1099,9 +1073,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 /* EVENT TITLE                                                            */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 
 .section--events .event__name {
   margin: 0 0 0.55rem;
@@ -1124,9 +1098,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 /* EVENT TAGLINE                                                          */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 
 .section--events .event__tagline {
   margin: 0 0 1.25rem;
@@ -1143,9 +1117,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 /* EVENT DESCRIPTION                                                      */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 
 .section--events .body-text {
   width: 100%;
@@ -1164,9 +1138,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 /* EVENT FACTS                                                            */
-/* ---------------------------------------------------------------------- */
+/* ====================================================================== */
 
 .section--events .event__facts {
   display: flex;
@@ -1182,7 +1156,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   list-style: none;
 }
 
-
 .section--events .event__facts li {
   position: relative;
 
@@ -1196,7 +1169,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
   color: rgba(243, 239, 228, 0.72);
 }
-
 
 .section--events .event__facts li::before {
   content: "";
@@ -1220,10 +1192,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* EVENT SCROLL REVEAL                                                    */
 /* ====================================================================== */
 
-/*
- * Images enter from the left.
- */
-
 .section--events .event__media {
   opacity: 0;
 
@@ -1233,11 +1201,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     opacity 0.9s ease,
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-
-/*
- * Content enters from the right.
- */
 
 .section--events .event__body {
   opacity: 0;
@@ -1250,7 +1213,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* Activate */
+/* Visible */
 
 .section--events .event.is-visible .event__media {
   opacity: 1;
@@ -1259,7 +1222,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
   transition-delay: 0s;
 }
-
 
 .section--events .event.is-visible .event__body {
   opacity: 1;
@@ -1270,9 +1232,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 
-/* ---------------------------------------------------------------------- */
-/* Reverse reveal                                                         */
-/* ---------------------------------------------------------------------- */
+/* Reverse */
 
 .section--events .event--reverse .event__media {
   transform: translateX(90px);
@@ -1282,7 +1242,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   transform: translateX(-90px);
 }
 
-
 .section--events .event--reverse.is-visible .event__media,
 .section--events .event--reverse.is-visible .event__body {
   transform: translateX(0);
@@ -1290,7 +1249,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 
 /* ====================================================================== */
-/* IMAGE MICRO-REVEAL                                                     */
+/* IMAGE MICRO REVEAL                                                     */
 /* ====================================================================== */
 
 .section--events .event__img {
@@ -1305,7 +1264,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-
 .section--events .event.is-visible .event__img {
   opacity: 1;
 
@@ -1314,11 +1272,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     scale(1);
 }
 
-
 .section--events .event.is-visible .event__img--1 {
   transition-delay: 0.12s;
 }
-
 
 .section--events .event.is-visible .event__img--2 {
   transition-delay: 0.22s;
@@ -1326,14 +1282,13 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   transform: scale(1.08);
 }
 
-
 .section--events .event.is-visible .event__img--3 {
   transition-delay: 0.32s;
 }
 
 
 /* ====================================================================== */
-/* MEDIUM DESKTOP                                                         */
+/* TABLET / SMALL LAPTOP                                                  */
 /* ====================================================================== */
 
 @media (max-width: 1200px) {
@@ -1341,7 +1296,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .section--events .event {
     max-width: 1100px;
 
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns:
+      minmax(0, 1.1fr)
+      minmax(0, 1fr);
 
     gap: 3.5rem;
   }
@@ -1360,10 +1317,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     width: calc(100% + 3vw);
   }
 
-  .section--events .event__body {
-    max-width: 600px;
-  }
-
 }
 
 
@@ -1375,12 +1328,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
   .section--events {
     padding-top: 5rem;
-
     padding-bottom: 6rem;
   }
 
-
-  .events__head {
+  .section--events .events__head {
     margin-bottom: 4rem;
 
     padding-left: 1.5rem;
@@ -1388,12 +1339,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   }
 
 
-  /*
-   * Return to normal one-column layout.
-   */
+  /* One column */
 
   .section--events .event,
   .section--events .event--reverse {
+
+    width: calc(100% - 3rem);
 
     max-width: 760px;
 
@@ -1409,9 +1360,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   }
 
 
-  /*
-   * Remove edge extension.
-   */
+  /* Remove viewport edge extension */
 
   .section--events .event__media,
   .section--events .event--reverse .event__media {
@@ -1424,33 +1373,43 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   }
 
 
-  .section--events .event__body {
+  /* Images */
 
+  .section--events .event__images {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1.15fr)
+      minmax(0, 1fr);
+
+    gap: 0.65rem;
+  }
+
+
+  /* Content */
+
+  .section--events .event__body {
     max-width: 680px;
 
     justify-self: start;
   }
 
 
-  /*
-   * Smaller horizontal reveal distance.
-   */
+  /* Smaller reveal */
 
   .section--events .event__media {
-    transform: translateX(-60px);
+    transform: translateX(-50px);
   }
 
   .section--events .event__body {
-    transform: translateX(60px);
+    transform: translateX(50px);
   }
 
-
   .section--events .event--reverse .event__media {
-    transform: translateX(60px);
+    transform: translateX(-50px);
   }
 
   .section--events .event--reverse .event__body {
-    transform: translateX(-60px);
+    transform: translateX(50px);
   }
 
 }
@@ -1463,73 +1422,114 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 600px) {
 
   .section--events {
-    padding-left: 1.2rem;
-
-    padding-right: 1.2rem;
+    padding-top: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 5rem;
   }
 
 
-  .events__head {
+  .section--events .events__head {
+    margin-bottom: 3rem;
+
     padding-left: 0;
-
     padding-right: 0;
-
-    margin-bottom: 3.5rem;
   }
 
 
   .section--events .event,
   .section--events .event--reverse {
 
-    gap: 2.5rem;
+    width: 100%;
+
+    max-width: 100%;
 
     margin-bottom: 5rem;
+
+    gap: 2.25rem;
   }
 
 
-  /*
-   * Three images remain visible,
-   * but are slightly tighter on phones.
-   */
+  /* -------------------------------------------------------------- */
+  /* MOBILE IMAGE GRID                                               */
+  /* -------------------------------------------------------------- */
 
   .section--events .event__images {
 
-    grid-template-columns:
-      1fr
-      1.1fr
-      1fr;
+    width: 100%;
 
-    gap: 0.4rem;
+    grid-template-columns:
+      minmax(0, 0.9fr)
+      minmax(0, 1.1fr)
+      minmax(0, 0.9fr);
+
+    gap: 0.35rem;
+
+    align-items: center;
   }
 
+
+  /* All cards have an explicit size */
+
+  .section--events .event__img {
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    min-width: 0;
+
+    opacity: 1;
+
+    transform: none;
+  }
+
+
+  /* Center */
 
   .section--events .event__img--2 {
-    transform: scale(1.05);
+    aspect-ratio: 3 / 4;
+
+    transform: scale(1.04);
+
+    z-index: 3;
   }
 
 
-  .section--events .event.is-visible .event__img--2 {
-    transform: scale(1.05);
-  }
-
+  /* Image */
 
   .section--events .event__img img {
-    aspect-ratio: 4 / 5;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+
+    min-width: 0;
+
+    object-fit: cover;
+
+    object-position: center;
   }
 
+
+  /* -------------------------------------------------------------- */
+  /* MOBILE TYPOGRAPHY                                              */
+  /* -------------------------------------------------------------- */
 
   .section--events .event__name {
 
-    font-size: 2.35rem;
+    font-size: 2.25rem;
 
-    line-height: 1.02;
+    line-height: 1.03;
   }
-
 
   .section--events .event__tagline {
     font-size: 1rem;
-  }
 
+    line-height: 1.45;
+  }
 
   .section--events .body-text {
 
@@ -1538,27 +1538,61 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     line-height: 1.8;
   }
 
-
   .section--events .event__facts li {
 
     font-size: 0.75rem;
   }
 
 
-  /*
-   * Smaller reveal distance on mobile.
-   */
+  /* -------------------------------------------------------------- */
+  /* MOBILE REVEAL                                                  */
+  /* -------------------------------------------------------------- */
 
   .section--events .event__media,
   .section--events .event--reverse .event__media {
 
-    transform: translateX(-40px);
+    transform: translateX(-30px);
   }
 
   .section--events .event__body,
   .section--events .event--reverse .event__body {
 
-    transform: translateX(40px);
+    transform: translateX(30px);
+  }
+
+
+  .section--events .event.is-visible .event__media,
+  .section--events .event.is-visible .event__body {
+
+    transform: translateX(0);
+  }
+
+
+  .section--events .event.is-visible .event__img--2 {
+
+    transform: scale(1.04);
+  }
+
+}
+
+
+/* ====================================================================== */
+/* VERY SMALL PHONES                                                      */
+/* ====================================================================== */
+
+@media (max-width: 380px) {
+
+  .section--events {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .section--events .event__images {
+    gap: 0.25rem;
+  }
+
+  .section--events .event__name {
+    font-size: 2rem;
   }
 
 }

@@ -358,167 +358,65 @@
      EVENTS
      ============================================================ -->
 
+<!-- EVENTS -->
 <section class="section section--events" id="events">
 
-  <!-- Topographic contour background -->
+  <!-- Contour background -->
   <svg
     class="events__contours"
-    viewBox="0 0 1440 1100"
-    preserveAspectRatio="xMidYMid slice"
+    viewBox="0 0 1600 1000"
+    preserveAspectRatio="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
   >
-
-    <defs>
-
-      <!-- Fade contours near the content -->
-      <radialGradient
-        id="eventsContourFade"
-        cx="50%"
-        cy="50%"
-        r="62%"
-      >
-        <stop
-          offset="0%"
-          stop-color="white"
-          stop-opacity="0"
-        />
-
-        <stop
-          offset="48%"
-          stop-color="white"
-          stop-opacity="0.02"
-        />
-
-        <stop
-          offset="78%"
-          stop-color="white"
-          stop-opacity="0.75"
-        />
-
-        <stop
-          offset="100%"
-          stop-color="white"
-          stop-opacity="1"
-        />
-      </radialGradient>
-
-      <mask id="eventsContourMask">
-        <rect
-          width="1440"
-          height="1100"
-          fill="url(#eventsContourFade)"
-        />
-      </mask>
-
-    </defs>
-
-
-    <!-- Contour lines -->
     <g
       fill="none"
       stroke="currentColor"
       stroke-width="1"
-      mask="url(#eventsContourMask)"
+      opacity="0.9"
     >
-
-      <path d="M -150 180
-               Q 180 60 470 150
-               T 1000 110
-               T 1590 190" />
-
-      <path d="M -150 260
-               Q 200 130 490 230
-               T 1020 190
-               T 1590 270" />
-
-      <path d="M -150 340
-               Q 220 200 510 310
-               T 1040 270
-               T 1590 350" />
-
-      <path d="M -150 420
-               Q 250 280 530 390
-               T 1060 350
-               T 1590 430" />
-
-      <path d="M -150 500
-               Q 280 360 550 470
-               T 1080 430
-               T 1590 510" />
-
-      <path d="M -150 580
-               Q 250 450 540 550
-               T 1050 510
-               T 1590 590" />
-
-      <path d="M -150 660
-               Q 220 540 520 630
-               T 1020 590
-               T 1590 670" />
-
-      <path d="M -150 740
-               Q 190 630 500 710
-               T 1000 670
-               T 1590 750" />
-
-      <path d="M -150 820
-               Q 170 720 480 790
-               T 980 750
-               T 1590 830" />
-
-      <path d="M -150 900
-               Q 150 810 460 870
-               T 960 830
-               T 1590 910" />
-
-      <path d="M -150 980
-               Q 130 900 440 950
-               T 940 910
-               T 1590 990" />
-
+      <path d="M-100 180 C250 40 480 260 760 120 S1280 40 1700 180" />
+      <path d="M-120 250 C230 100 500 330 800 190 S1300 100 1720 250" />
+      <path d="M-140 320 C220 160 520 400 840 260 S1320 160 1740 320" />
+      <path d="M-160 390 C210 220 540 470 880 330 S1340 220 1760 390" />
+      <path d="M-180 460 C200 280 560 540 920 400 S1360 280 1780 460" />
+      <path d="M-200 530 C190 340 580 610 960 470 S1380 340 1800 530" />
+      <path d="M-220 600 C180 400 600 680 1000 540 S1400 400 1820 600" />
+      <path d="M-240 670 C170 460 620 750 1040 610 S1420 460 1840 670" />
+      <path d="M-260 740 C160 520 640 820 1080 680 S1440 520 1860 740" />
+      <path d="M-280 810 C150 580 660 890 1120 750 S1460 580 1880 810" />
     </g>
-
   </svg>
 
 
   <!-- Section heading -->
   <div class="section__head events__head">
-
-    <p class="eyebrow eyebrow--light">
-      What we run
-    </p>
-
-    <h2 class="section__title section__title--light">
-      Events
-    </h2>
-
+    <p class="eyebrow eyebrow--light">What we run</p>
+    <h2 class="section__title section__title--light">Events</h2>
   </div>
 
 
-  <!-- Events -->
   {% for event in events %}
 
   <article
     class="event {% if loop.index0 is odd %}event--reverse{% endif %}"
   >
 
-    <!-- ========================================================
-         EVENT MEDIA
-         ======================================================== -->
-
+    <!-- EVENT IMAGES -->
     <div class="event__media">
 
       <div class="event__images">
 
-        {% for img in event.images[:3] %}
+        {% for img in event.images %}
 
-        <figure class="event__img event__img--{{ loop.index }}">
+        <figure
+          class="event__img event__img--{{ loop.index }}"
+        >
 
           <img
             src="{{ url_for('static', filename='images/' + img.src) }}"
             alt="{{ img.caption }}"
-            loading="lazy"
+            decoding="async"
           >
 
         </figure>
@@ -530,10 +428,7 @@
     </div>
 
 
-    <!-- ========================================================
-         EVENT CONTENT
-         ======================================================== -->
-
+    <!-- EVENT CONTENT -->
     <div class="event__body">
 
       <p class="event__meta">
@@ -551,7 +446,6 @@
       <p class="body-text body-text--light">
         {{ event.text }}
       </p>
-
 
       {% if event.facts %}
 
