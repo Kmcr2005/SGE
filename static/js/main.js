@@ -500,3 +500,191 @@
   });
 
 })();
+
+(function () {
+
+  "use strict";
+
+
+  /* ================================================================ */
+  /* NAVIGATION                                                       */
+  /* ================================================================ */
+
+  var nav = document.getElementById("nav");
+
+  var toggle =
+    document.getElementById("nav-toggle");
+
+  var links =
+    document.getElementById("nav-links");
+
+
+  function updateNav() {
+
+    if (!nav) return;
+
+    if (window.scrollY > 24) {
+
+      nav.classList.add("is-scrolled");
+
+    } else {
+
+      nav.classList.remove("is-scrolled");
+
+    }
+
+  }
+
+
+  window.addEventListener(
+    "scroll",
+    updateNav,
+    { passive: true }
+  );
+
+
+  updateNav();
+
+
+  /* ================================================================ */
+  /* MOBILE MENU                                                      */
+  /* ================================================================ */
+
+  if (toggle && links) {
+
+    toggle.addEventListener(
+      "click",
+      function () {
+
+        var isOpen =
+          links.classList.toggle("is-open");
+
+        toggle.setAttribute(
+          "aria-expanded",
+          isOpen ? "true" : "false"
+        );
+
+      }
+    );
+
+
+    links
+      .querySelectorAll("a")
+      .forEach(function (link) {
+
+        link.addEventListener(
+          "click",
+          function () {
+
+            links.classList.remove(
+              "is-open"
+            );
+
+            toggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+  }
+
+
+  /* ================================================================ */
+  /* EVENTS ANIMATION                                                 */
+  /* ================================================================ */
+
+  var eventCards =
+    document.querySelectorAll(
+      ".section--events .event"
+    );
+
+
+  if (!eventCards.length) {
+
+    return;
+
+  }
+
+
+  /*
+   * If the browser doesn't support IntersectionObserver,
+   * simply activate all animations.
+   */
+
+  if (
+    !("IntersectionObserver" in window)
+  ) {
+
+    eventCards.forEach(
+      function (event) {
+
+        event.classList.add(
+          "event--animate"
+        );
+
+      }
+    );
+
+    return;
+
+  }
+
+
+  var eventObserver =
+    new IntersectionObserver(
+
+      function (entries, observer) {
+
+        entries.forEach(
+          function (entry) {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "event--animate"
+              );
+
+
+              /*
+               * Only animate each event once.
+               */
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          }
+        );
+
+      },
+
+      {
+        threshold: 0.12,
+
+        rootMargin:
+          "0px 0px -8% 0px"
+      }
+
+    );
+
+
+  eventCards.forEach(
+    function (event) {
+
+      eventObserver.observe(
+        event
+      );
+
+    }
+  );
+
+
+})();

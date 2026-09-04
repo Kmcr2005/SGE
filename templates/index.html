@@ -359,12 +359,13 @@
      ============================================================ -->
 
 <!-- EVENTS -->
+<!-- EVENTS -->
 <section class="section section--events" id="events">
 
-  <!-- Contour background -->
+  <!-- Decorative contour lines -->
   <svg
     class="events__contours"
-    viewBox="0 0 1600 1000"
+    viewBox="0 0 1600 1100"
     preserveAspectRatio="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
@@ -373,101 +374,107 @@
       fill="none"
       stroke="currentColor"
       stroke-width="1"
-      opacity="0.9"
     >
-      <path d="M-100 180 C250 40 480 260 760 120 S1280 40 1700 180" />
-      <path d="M-120 250 C230 100 500 330 800 190 S1300 100 1720 250" />
-      <path d="M-140 320 C220 160 520 400 840 260 S1320 160 1740 320" />
-      <path d="M-160 390 C210 220 540 470 880 330 S1340 220 1760 390" />
-      <path d="M-180 460 C200 280 560 540 920 400 S1360 280 1780 460" />
-      <path d="M-200 530 C190 340 580 610 960 470 S1380 340 1800 530" />
-      <path d="M-220 600 C180 400 600 680 1000 540 S1400 400 1820 600" />
-      <path d="M-240 670 C170 460 620 750 1040 610 S1420 460 1840 670" />
-      <path d="M-260 740 C160 520 640 820 1080 680 S1440 520 1860 740" />
-      <path d="M-280 810 C150 580 660 890 1120 750 S1460 580 1880 810" />
+      <path d="M-100 120 C180 20 400 230 690 110 S1240 20 1700 150" />
+      <path d="M-100 230 C180 130 400 340 690 220 S1240 130 1700 260" />
+      <path d="M-100 340 C180 240 400 450 690 330 S1240 240 1700 370" />
+      <path d="M-100 450 C180 350 400 560 690 440 S1240 350 1700 480" />
+      <path d="M-100 560 C180 460 400 670 690 550 S1240 460 1700 590" />
+      <path d="M-100 670 C180 570 400 780 690 660 S1240 570 1700 700" />
+      <path d="M-100 780 C180 680 400 890 690 770 S1240 680 1700 810" />
+      <path d="M-100 890 C180 790 400 1000 690 880 S1240 790 1700 920" />
+      <path d="M-100 1000 C180 900 400 1110 690 990 S1240 900 1700 1030" />
     </g>
   </svg>
 
 
   <!-- Section heading -->
   <div class="section__head events__head">
-    <p class="eyebrow eyebrow--light">What we run</p>
-    <h2 class="section__title section__title--light">Events</h2>
+
+    <p class="eyebrow eyebrow--light">
+      What we run
+    </p>
+
+    <h2 class="section__title section__title--light">
+      Events
+    </h2>
+
   </div>
 
 
-  {% for event in events %}
+  <!-- Event cards -->
+  <div class="events__list">
 
-  <article
-    class="event {% if loop.index0 is odd %}event--reverse{% endif %}"
-  >
+    {% for event in events %}
 
-    <!-- EVENT IMAGES -->
-    <div class="event__media">
+    <article
+      class="event {% if loop.index0 is odd %}event--reverse{% endif %}"
+    >
 
-      <div class="event__images">
+      <!-- IMAGE GROUP -->
+      <div class="event__media">
 
-        {% for img in event.images %}
+        <div class="event__images">
 
-        <figure
-          class="event__img event__img--{{ loop.index }}"
-        >
+          {% for img in event.images %}
 
-          <img
-            src="{{ url_for('static', filename='images/' + img.src) }}"
-            alt="{{ img.caption }}"
-            decoding="async"
+          <figure
+            class="event__img event__img--{{ loop.index }}"
           >
 
-        </figure>
+            <img
+              src="{{ url_for('static', filename='images/' + img.src) }}"
+              alt="{{ img.caption }}"
+              decoding="async"
+            >
 
-        {% endfor %}
+          </figure>
+
+          {% endfor %}
+
+        </div>
 
       </div>
 
-    </div>
 
+      <!-- TEXT -->
+      <div class="event__body">
 
-    <!-- EVENT CONTENT -->
-    <div class="event__body">
+        <p class="event__meta">
+          {{ event.code }} · {{ event.meta }}
+        </p>
 
-      <p class="event__meta">
-        {{ event.meta }}
-      </p>
+        <h3 class="event__name">
+          {{ event.name }}
+        </h3>
 
-      <h3 class="event__name">
-        {{ event.name }}
-      </h3>
+        <p class="event__tagline">
+          {{ event.tagline }}
+        </p>
 
-      <p class="event__tagline">
-        {{ event.tagline }}
-      </p>
+        <p class="body-text">
+          {{ event.text }}
+        </p>
 
-      <p class="body-text body-text--light">
-        {{ event.text }}
-      </p>
+        <ul class="event__facts">
 
-      {% if event.facts %}
+          {% for fact in event.facts %}
 
-      <ul class="event__facts">
+          <li>
+            {{ fact }}
+          </li>
 
-        {% for fact in event.facts %}
+          {% endfor %}
 
-        <li>
-          {{ fact }}
-        </li>
+        </ul>
 
-        {% endfor %}
+      </div>
 
-      </ul>
+    </article>
 
-      {% endif %}
+    {% endfor %}
 
-    </div>
-
-  </article>
-
-  {% endfor %}
+  </div>
 
 </section>
 
