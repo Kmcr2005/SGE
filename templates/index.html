@@ -1,0 +1,761 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="grain"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ site.org_short }} emblem" class="nav__logo">
+      <span class="nav__brand-text">
+        <span class="nav__brand-short">{{ site.org_short }}</span>
+        <span class="nav__brand-long">{{ site.org_name }}</span>
+      </span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      {% for label, href in nav_links %}
+      <a href="{{ href }}">{{ label }}</a>
+      {% endfor %}
+    </nav>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero__contours" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M -100 700 Q 250 600 550 680 T 1100 620 T 1600 700" />
+        <path d="M -100 620 Q 280 520 560 600 T 1120 540 T 1600 610" />
+        <path d="M -100 540 Q 300 440 580 520 T 1140 470 T 1600 530" />
+        <path d="M -100 460 Q 320 370 600 440 T 1160 400 T 1600 450" />
+        <path d="M -100 780 Q 230 690 540 760 T 1080 700 T 1600 780" />
+        <path d="M -100 860 Q 220 780 520 840 T 1050 790 T 1600 860" />
+      </g>
+    </svg>
+    <div class="hero__inner">
+      
+      <h1 class="hero__title">Reading the earth,<br>one layer at a time.</h1>
+      <p class="hero__lede">{{ site.org_name }} ({{ site.org_short }}) is the student-led geospatial
+        association of the Institute of Remote Sensing, College of Engineering Guindy, Anna
+        University — working across Remote Sensing, GIS, Earth Observation and Surveying.</p>
+      <div class="hero__actions">
+        <a href="#events" class="btn btn--primary">See our events</a>
+        <a href="#about" class="btn btn--ghost">About SGE</a>
+      </div>
+    </div>
+    <div class="hero__compass" aria-hidden="true">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        <circle cx="100" cy="100" r="66" fill="none" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+        <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+        <line x1="100" y1="8" x2="100" y2="192" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+        <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+        <path
+          id="compass-n-arrow"
+          d="M100 20 L108 100 L100 96 L92 100 Z"
+          fill="var(--redline)"
+        />
+        <text x="100" y="14" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">N</text>
+        <text x="100" y="196" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">S</text>
+        <text x="6" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">W</text>
+        <text x="194" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">E</text>
+      </svg>
+    </div>
+  </section>
+
+ <!-- ABOUT -->
+<section class="section section--paper" id="about">
+
+  <div class="section__grid section__grid--about">
+
+    <div class="section__col">
+      <p class="eyebrow">About the society</p>
+
+      <h2 class="section__title">
+        Built inside the Institute of Remote Sensing
+      </h2>
+
+      <p class="body-text">
+        {{ about_text }}
+      </p>
+    </div>
+
+
+    <!-- ABOUT IMAGE / MAP -->
+    <div class="about__figure">
+
+      <div class="about__visual" id="about-visual">
+
+        <!-- Original image -->
+        <img
+          id="about-image"
+          src="{{ url_for('static', filename='images/irs_building.jpeg') }}"
+          alt="Institute of Remote Sensing building, College of Engineering Guindy, Anna University"
+          class="about__photo"
+        >
+
+
+        <!-- Interactive map -->
+        <div
+          id="about-map"
+          class="about__map"
+          aria-hidden="true"
+        ></div>
+
+
+        <!-- SGE MAP TOGGLE -->
+        <button
+          class="about__badge"
+          id="about-map-toggle"
+          type="button"
+          aria-label="Show Institute of Remote Sensing location on map"
+          aria-pressed="false"
+        >
+          <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="SGE emblem"
+          >
+        </button>
+
+      </div>
+
+
+      <p class="figure-caption">
+        Institute of Remote Sensing, College of Engineering Guindy, Anna University
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- VISION & MISSION -->
+<!-- VISION & MISSION -->
+<section class="section section--vision-mission" id="vision">
+
+  <!-- Contour background -->
+  <svg
+    class="vision__contours"
+    viewBox="0 0 1600 700"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+
+    <defs>
+
+      <!-- Contour fade -->
+      <radialGradient
+        id="visionContourFade"
+        cx="50%"
+        cy="50%"
+        r="72%"
+      >
+        <stop
+          offset="0%"
+          stop-color="white"
+          stop-opacity="0"
+        />
+
+        <stop
+          offset="38%"
+          stop-color="white"
+          stop-opacity="0.02"
+        />
+
+        <stop
+          offset="68%"
+          stop-color="white"
+          stop-opacity="0.45"
+        />
+
+        <stop
+          offset="100%"
+          stop-color="white"
+          stop-opacity="1"
+        />
+      </radialGradient>
+
+      <mask id="visionContourMask">
+        <rect
+          width="1600"
+          height="700"
+          fill="url(#visionContourFade)"
+        />
+      </mask>
+
+    </defs>
+
+
+    <!-- Topographic contour lines -->
+    <g
+      mask="url(#visionContourMask)"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1"
+    >
+
+      <path d="M-150 130 C220 -10 500 220 820 80 S1390 20 1770 160" />
+
+      <path d="M-160 190 C220 40 520 280 850 140 S1410 80 1780 220" />
+
+      <path d="M-170 250 C230 100 540 340 880 200 S1430 140 1790 280" />
+
+      <path d="M-180 310 C240 160 560 400 910 260 S1450 200 1800 340" />
+
+      <path d="M-190 370 C250 220 580 460 940 320 S1470 260 1810 400" />
+
+      <path d="M-200 430 C260 280 600 520 970 380 S1490 320 1820 460" />
+
+      <path d="M-210 490 C270 340 620 580 1000 440 S1510 380 1830 520" />
+
+      <path d="M-220 550 C280 400 640 640 1030 500 S1530 440 1840 580" />
+
+      <path d="M-230 610 C290 460 660 700 1060 560 S1550 500 1850 640" />
+
+      <path d="M-240 670 C300 520 680 760 1090 620 S1570 560 1860 700" />
+
+    </g>
+
+  </svg>
+
+
+  <!-- Vision / Mission content -->
+  <div class="section__grid section__grid--split">
+
+    <!-- VISION -->
+    <div class="split__col vision__item">
+
+      <p class="eyebrow eyebrow--light">
+        Vision
+      </p>
+
+      <h3 class="split__title">
+        A forward-thinking geospatial culture
+      </h3>
+
+      <p class="body-text body-text--light">
+        {{ vision_text }}
+      </p>
+
+    </div>
+
+
+    <!-- CENTER DIVIDER -->
+    <div
+      class="split__divider"
+      aria-hidden="true"
+    ></div>
+
+
+    <!-- MISSION -->
+    <div class="split__col mission__item">
+
+      <p class="eyebrow eyebrow--light">
+        Mission
+      </p>
+
+      <h3 class="split__title">
+        From classroom learning to real-world application
+      </h3>
+
+      <p class="body-text body-text--light">
+        {{ mission_text }}
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- LEADERSHIP NOTES -->
+  <section class="section leadership-section" id="leadership">
+    <div class="section__head">
+      <p class="eyebrow">From the leadership</p>
+      <h2 class="section__title">Notes from SGE</h2>
+      <p class="body-text">
+        Messages from the leaders who guide and support the Society of
+        Geoinformatics Engineers.
+      </p>
+    </div>
+
+    <div class="leadership-carousel" aria-label="Leadership notes">
+      <div class="leadership-track">
+
+        {% for leader in leadership %}
+        <article class="leader-card">
+          <div class="leader-card__image">
+            <img
+              src="{{ url_for('static', filename='images/' + leader.image) }}"
+              alt="{{ leader.name }}"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="leader-card__content">
+            <p class="leader-card__role">{{ leader.role }}</p>
+
+            <h3 class="leader-card__name">
+              {{ leader.name }}
+            </h3>
+
+            <p class="leader-card__designation">
+              {{ leader.designation }}
+            </p>
+
+            <div class="leader-card__rule"></div>
+
+            <p class="leader-card__note">
+              {{ leader.note }}
+            </p>
+          </div>
+        </article>
+        {% endfor %}
+
+        <!-- Duplicate set for seamless infinite scrolling -->
+        {% for leader in leadership %}
+        <article class="leader-card" aria-hidden="true">
+          <div class="leader-card__image">
+            <img
+              src="{{ url_for('static', filename='images/' + leader.image) }}"
+              alt=""
+              loading="lazy"
+            >
+          </div>
+
+          <div class="leader-card__content">
+            <p class="leader-card__role">{{ leader.role }}</p>
+
+            <h3 class="leader-card__name">
+              {{ leader.name }}
+            </h3>
+
+            <p class="leader-card__designation">
+              {{ leader.designation }}
+            </p>
+
+            <div class="leader-card__rule"></div>
+
+            <p class="leader-card__note">
+              {{ leader.note }}
+            </p>
+          </div>
+        </article>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================================
+     EVENTS
+     ============================================================ -->
+
+<!-- EVENTS -->
+<!-- EVENTS -->
+<section class="section section--events" id="events">
+
+  <!-- Decorative contour lines -->
+  <svg
+    class="events__contours"
+    viewBox="0 0 1600 1100"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <g
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1"
+    >
+      <path d="M-100 120 C180 20 400 230 690 110 S1240 20 1700 150" />
+      <path d="M-100 230 C180 130 400 340 690 220 S1240 130 1700 260" />
+      <path d="M-100 340 C180 240 400 450 690 330 S1240 240 1700 370" />
+      <path d="M-100 450 C180 350 400 560 690 440 S1240 350 1700 480" />
+      <path d="M-100 560 C180 460 400 670 690 550 S1240 460 1700 590" />
+      <path d="M-100 670 C180 570 400 780 690 660 S1240 570 1700 700" />
+      <path d="M-100 780 C180 680 400 890 690 770 S1240 680 1700 810" />
+      <path d="M-100 890 C180 790 400 1000 690 880 S1240 790 1700 920" />
+      <path d="M-100 1000 C180 900 400 1110 690 990 S1240 900 1700 1030" />
+    </g>
+  </svg>
+
+
+  <!-- Section heading -->
+  <div class="section__head events__head">
+
+    <p class="eyebrow eyebrow--light">
+      What we run
+    </p>
+
+    <h2 class="section__title section__title--light">
+      Events
+    </h2>
+
+  </div>
+
+
+  <!-- Event cards -->
+  <div class="events__list">
+
+    {% for event in events %}
+
+    <article
+      class="event {% if loop.index0 is odd %}event--reverse{% endif %}"
+    >
+
+      <!-- IMAGE GROUP -->
+      <div class="event__media">
+
+        <div class="event__images">
+
+          {% for img in event.images %}
+
+          <figure
+            class="event__img event__img--{{ loop.index }}"
+          >
+
+            <img
+              src="{{ url_for('static', filename='images/' + img.src) }}"
+              alt="{{ img.caption }}"
+              decoding="async"
+            >
+
+          </figure>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+
+      <!-- TEXT -->
+      <div class="event__body">
+
+        <p class="event__meta">
+          {{ event.code }} · {{ event.meta }}
+        </p>
+
+        <h3 class="event__name">
+          {{ event.name }}
+        </h3>
+
+        <p class="event__tagline">
+          {{ event.tagline }}
+        </p>
+
+        <p class="body-text">
+          {{ event.text }}
+        </p>
+
+        <ul class="event__facts">
+
+          {% for fact in event.facts %}
+
+          <li>
+            {{ fact }}
+          </li>
+
+          {% endfor %}
+
+        </ul>
+
+      </div>
+
+    </article>
+
+    {% endfor %}
+
+  </div>
+
+</section>
+
+  <!-- GALLERY -->
+ <!-- GALLERY -->
+<section class="section section--dark" id="gallery">
+
+  <div class="section__head">
+    <p class="eyebrow eyebrow--light">From the field</p>
+    <h2 class="section__title section__title--light">Gallery</h2>
+  </div>
+
+  <div class="gallery-carousel">
+
+    <!-- WEST -->
+    <button
+      class="gallery-arrow gallery-arrow--west"
+      id="gallery-prev"
+      type="button"
+      aria-label="Previous gallery page"
+    >
+      W
+    </button>
+
+
+    <!-- GALLERY VIEWPORT -->
+    <div class="gallery-viewport">
+
+      <div class="gallery-track" id="gallery-track">
+
+        {% for item in gallery %}
+
+          {% if loop.index0 % 4 == 0 %}
+          <div class="gallery-page">
+          {% endif %}
+
+            <figure class="gallery__item">
+
+              <img
+                src="{{ url_for('static', filename='images/' + item.src) }}"
+                alt="{{ item.caption }}"
+                loading="lazy"
+              >
+
+              <figcaption>
+                {{ item.caption }}
+              </figcaption>
+
+            </figure>
+
+          {% if loop.index0 % 4 == 3 or loop.last %}
+          </div>
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+
+    <!-- EAST -->
+    <button
+      class="gallery-arrow gallery-arrow--east"
+      id="gallery-next"
+      type="button"
+      aria-label="Next gallery page"
+    >
+      E
+    </button>
+
+  </div>
+
+
+  <!-- PAGE INDICATORS -->
+  <div
+    class="gallery-pagination"
+    id="gallery-pagination"
+    aria-label="Gallery pages"
+  ></div>
+
+</section>
+
+  <!-- SPONSORS -->
+  <section class="section section--paper" id="sponsors">
+    <div class="section__head">
+      <p class="eyebrow">Supported by</p>
+      <h2 class="section__title">Sponsors</h2>
+    </div>
+    <ol class="benchmark-list">
+      {% for sponsor in sponsors %}
+      <li class="benchmark-list__row">
+        <span class="benchmark-list__mark">BM&#8209;{{ "%02d"|format(loop.index) }}</span>
+        <span class="benchmark-list__name">{{ sponsor }}</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+<!-- ============================================================ -->
+<!-- STUDENT OFFICE BEARERS                                      -->
+<!-- ============================================================ -->
+
+<section class="office-bearers" id="office-bearers">
+
+  <div class="office-bearers__header reveal">
+
+    <p class="eyebrow eyebrow--light">
+      Student leadership
+    </p>
+
+    <h2 class="office-bearers__title">
+      Student Office Bearers
+    </h2>
+
+    <p class="office-bearers__subtitle">
+      Meet the students who lead SGE, build the community,
+      organise events and shape the future of Geoinformatics.
+    </p>
+
+  </div>
+
+
+  <!-- 3D CAROUSEL -->
+
+  <div class="bearer-carousel">
+
+    <!-- LEFT ARROW -->
+
+    <button
+      type="button"
+      class="bearer-arrow bearer-arrow--left"
+      id="bearer-prev"
+      aria-label="Previous office bearer">
+
+      <span>←</span>
+
+    </button>
+
+
+    <!-- CARD STAGE -->
+
+    <div class="bearer-stage">
+
+      {% for bearer in office_bearers %}
+
+      <article
+        class="bearer-card"
+        data-index="{{ loop.index0 }}">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="{{ url_for('static', filename='images/' + bearer.image) }}"
+            alt="{{ bearer.name }} - {{ bearer.role }}"
+            class="bearer-card__image"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            {{ "%02d"|format(loop.index) }}
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            {{ bearer.role }}
+          </p>
+
+          <h3 class="bearer-card__name">
+            {{ bearer.name }}
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · {{ bearer.year }}
+          </p>
+
+
+
+
+        </div>
+
+      </article>
+
+      {% endfor %}
+
+    </div>
+
+
+    <!-- RIGHT ARROW -->
+
+    <button
+      type="button"
+      class="bearer-arrow bearer-arrow--right"
+      id="bearer-next"
+      aria-label="Next office bearer">
+
+      <span>→</span>
+
+    </button>
+
+  </div>
+
+
+  <!-- DOTS -->
+
+  <div
+    class="bearer-dots"
+    id="bearer-dots">
+
+    {% for bearer in office_bearers %}
+
+    <button
+      type="button"
+      class="bearer-dot {% if loop.first %}active{% endif %}"
+      data-index="{{ loop.index0 }}"
+      aria-label="Show {{ bearer.name }}">
+    </button>
+
+    {% endfor %}
+
+  </div>
+
+
+  <!-- COUNTER -->
+
+  <div class="bearer-counter">
+
+    <span id="bearer-current">01</span>
+
+    <span>/</span>
+
+    <span>
+      {{ "%02d"|format(office_bearers|length) }}
+    </span>
+
+  </div>
+
+</section>
+  <!-- ALUMNI -->
+  <section class="section section--paper section--tight" id="alumni">
+    <div class="section__head">
+      <p class="eyebrow">With thanks to</p>
+      <h2 class="section__title">Alumni support</h2>
+    </div>
+    <ul class="alumni-list">
+      {% for a in alumni %}
+      <li>{{ a }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ site.org_short }} emblem" class="footer__logo">
+      <p>{{ site.org_name }}</p>
+    </div>
+    <div class="footer__col">
+      <p class="footer__heading">Find us</p>
+      <p>{{ site.parent }}</p>
+      <p>College of Engineering Guindy Campus, Anna University, Chennai &ndash; 600025</p>
+      <p class="mono-tag">{{ site.coordinates }}</p>
+    </div>
+    <div class="footer__col">
+      <p class="footer__heading">Follow SGE</p>
+      <p><a href="https://www.instagram.com/_sge_official/" target="_blank" rel="noopener">Instagram &mdash; _sge_official</a></p>
+      <p><a href="https://x.com/Sge__official" target="_blank" rel="noopener">X &mdash; Sge__official</a></p>
+      <p>LinkedIn &mdash; Society of Geoinformatics Engineers CEG</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>&copy; {{ year }} {{ site.org_short }} &middot; {{ site.parent }}</p>
+  </div>
+</footer>
+
+{% endblock %}
