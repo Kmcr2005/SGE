@@ -1304,3 +1304,50 @@
   updateCards();
 
 })();
+
+/* ============================================================= */
+/* SPONSORS & ALUMNI FILTER TABS                                 */
+/* ============================================================= */
+(function () {
+  var supporterTabs = document.querySelectorAll(".supporter-tab");
+  var supportersGrid = document.querySelector(".supporters-grid");
+
+  if (!supporterTabs.length || !supportersGrid) return;
+
+  function setActiveTab(filter) {
+    supporterTabs.forEach(function (tab) {
+      var isActive = tab.getAttribute("data-filter") === filter;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+
+    supportersGrid.classList.remove("filter-sponsors", "filter-alumni");
+    if (filter === "sponsors") {
+      supportersGrid.classList.add("filter-sponsors");
+    } else if (filter === "alumni") {
+      supportersGrid.classList.add("filter-alumni");
+    }
+  }
+
+  supporterTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      var filter = this.getAttribute("data-filter");
+      setActiveTab(filter);
+    });
+  });
+
+  // Check URL hash on load and hashchange
+  function checkHash() {
+    var hash = window.location.hash.toLowerCase();
+    if (hash === "#sponsors") {
+      setActiveTab("sponsors");
+    } else if (hash === "#alumni") {
+      setActiveTab("alumni");
+    } else if (hash === "#sponsors-alumni") {
+      setActiveTab("all");
+    }
+  }
+
+  window.addEventListener("hashchange", checkHash);
+  checkHash();
+})();

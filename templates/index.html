@@ -558,21 +558,7 @@
 
 </section>
 
-  <!-- SPONSORS -->
-  <section class="section section--paper" id="sponsors">
-    <div class="section__head">
-      <p class="eyebrow">Supported by</p>
-      <h2 class="section__title">Sponsors</h2>
-    </div>
-    <ol class="benchmark-list">
-      {% for sponsor in sponsors %}
-      <li class="benchmark-list__row">
-        <span class="benchmark-list__mark">BM&#8209;{{ "%02d"|format(loop.index) }}</span>
-        <span class="benchmark-list__name">{{ sponsor }}</span>
-      </li>
-      {% endfor %}
-    </ol>
-  </section>
+
 <!-- ============================================================ -->
 <!-- STUDENT OFFICE BEARERS                                      -->
 <!-- ============================================================ -->
@@ -632,6 +618,7 @@
             src="{{ url_for('static', filename='images/' + bearer.image) }}"
             alt="{{ bearer.name }} - {{ bearer.role }}"
             class="bearer-card__image"
+            style="object-position: {{ bearer.focus or 'center 20%' }};"
             loading="lazy">
 
           <span class="bearer-card__number">
@@ -657,10 +644,67 @@
             SGE · {{ bearer.year }}
           </p>
 
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
 
+            {% if bearer.linkedin %}
+            <a
+              href="{{ bearer.linkedin if bearer.linkedin.startswith('http') else 'https://' + bearer.linkedin }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="{{ bearer.name }} on LinkedIn"
+              title="LinkedIn: {{ bearer.name }}">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            {% endif %}
 
+            {% if bearer.instagram %}
+            <a
+              href="{{ bearer.instagram if bearer.instagram.startswith('http') else 'https://' + bearer.instagram }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="{{ bearer.name }} on Instagram"
+              title="Instagram: {{ bearer.name }}">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            {% endif %}
 
-        </div>
+            {% if bearer.email %}
+            <a
+              href="mailto:{{ bearer.email }}"
+              class="bearer-social"
+              aria-label="Email {{ bearer.name }}"
+              title="Email: {{ bearer.email }}">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            {% endif %}
+
+            {% if bearer.contact %}
+            <a
+              href="tel:+91{{ bearer.contact.replace(' ', '') }}"
+              class="bearer-social"
+              aria-label="Call {{ bearer.name }}"
+              title="Contact: +91 {{ bearer.contact }}">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            {% endif %}
+
+          </div>
 
       </article>
 
@@ -719,17 +763,109 @@
   </div>
 
 </section>
-  <!-- ALUMNI -->
-  <section class="section section--paper section--tight" id="alumni">
+  <!-- ============================================================ -->
+  <!-- SPONSORS & ALUMNI                                            -->
+  <!-- ============================================================ -->
+  <section class="section section--paper supporters-section" id="sponsors-alumni">
+    <!-- Backwards-compatible anchors -->
+    <span id="sponsors" class="anchor-target"></span>
+    <span id="alumni" class="anchor-target"></span>
+
     <div class="section__head">
-      <p class="eyebrow">With thanks to</p>
-      <h2 class="section__title">Alumni support</h2>
+      <p class="eyebrow">Partnerships &amp; Community</p>
+      <h2 class="section__title">Sponsors &amp; Alumni</h2>
+      <p class="body-text">
+        Recognizing the esteemed corporate partners and dedicated alumni whose generous contributions power our academic workshops, symposiums, and geospatial initiatives.
+      </p>
+
+      <!-- Supporters Interactive Filter Tabs -->
+      <div class="supporter-tabs" role="tablist" aria-label="Filter supporters">
+        <button class="supporter-tab is-active" data-filter="all" type="button" role="tab" aria-selected="true">
+          <span class="supporter-tab__text">All Supporters</span>
+          <span class="supporter-tab__count">{{ sponsors|length + alumni|length }}</span>
+        </button>
+        <button class="supporter-tab" data-filter="sponsors" type="button" role="tab" aria-selected="false">
+          <span class="supporter-tab__text">Industry Sponsors</span>
+          <span class="supporter-tab__count">{{ sponsors|length }}</span>
+        </button>
+        <button class="supporter-tab" data-filter="alumni" type="button" role="tab" aria-selected="false">
+          <span class="supporter-tab__text">Alumni Support</span>
+          <span class="supporter-tab__count">{{ alumni|length }}</span>
+        </button>
+      </div>
     </div>
-    <ul class="alumni-list">
-      {% for a in alumni %}
-      <li>{{ a }}</li>
-      {% endfor %}
-    </ul>
+
+    <div class="supporters-grid">
+      <!-- SPONSORS COLUMN -->
+      <div class="supporters-pane supporters-pane--sponsors" data-category="sponsors">
+        <div class="supporter-card">
+          <div class="supporter-card__header">
+            <div class="supporter-card__title-group">
+              <span class="supporter-card__tag">Industry Network</span>
+              <h3 class="supporter-card__title">Corporate &amp; Technical Sponsors</h3>
+            </div>
+            <span class="supporter-card__count-badge">{{ sponsors|length }} Partners</span>
+          </div>
+
+          <p class="supporter-card__desc">
+            Proudly supported by leading organizations and enterprises driving innovation in geospatial technologies, surveying, and infrastructure.
+          </p>
+
+          <div class="sponsor-grid">
+            {% for sponsor in sponsors %}
+            <div class="sponsor-card" title="{{ sponsor.name }}">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="{{ url_for('static', filename='images/' + sponsor.image) }}"
+                  alt="{{ sponsor.name }} logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">{{ sponsor.name }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- ALUMNI COLUMN -->
+      <div class="supporters-pane supporters-pane--alumni" data-category="alumni">
+        <div class="supporter-card supporter-card--alumni">
+          <div class="supporter-card__header">
+            <div class="supporter-card__title-group">
+              <span class="supporter-card__tag supporter-card__tag--brass">IRS &amp; CEG Heritage</span>
+              <h3 class="supporter-card__title">Alumni Contributions</h3>
+            </div>
+            <span class="supporter-card__count-badge">Legacy Patrons</span>
+          </div>
+
+          <p class="supporter-card__desc">
+            With sincere gratitude to our senior graduates and alumni batches for their continuous mentorship, encouragement, and patronage to the Society.
+          </p>
+
+          <ul class="alumni-list">
+            {% for a in alumni %}
+            <li class="alumni-card">
+              <span class="alumni-card__icon" aria-hidden="true">&#9670;</span>
+              <span class="alumni-card__name">{{ a }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <div class="alumni-connect-box">
+            <div class="alumni-connect-box__content">
+              <h4 class="alumni-connect-box__title">Are you an IRS / CEG Alumnus?</h4>
+              <p class="alumni-connect-box__text">Reconnect with the Society, mentor current Geoinformatics students, or collaborate on upcoming events.</p>
+            </div>
+            <a href="mailto:sgeceg@gmail.com" class="alumni-connect-btn">
+              <span>Connect with SGE</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
 </main>

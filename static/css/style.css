@@ -1710,50 +1710,326 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ---------------------------------------------------------------------- */
-/* Sponsors — benchmark ledger                                            */
+/* Sponsors & Alumni Section                                              */
 /* ---------------------------------------------------------------------- */
-.benchmark-list {
-  max-width: var(--max);
-  margin: 0 auto;
-  border-top: 1px solid var(--line);
-}
-.benchmark-list__row {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding: 1.05rem 0.2rem;
-  border-bottom: 1px solid var(--line);
-  transition: background 0.2s ease;
-}
-.benchmark-list__row:hover { background: rgba(79, 122, 99, 0.06); }
-.benchmark-list__mark {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--terrain);
-  width: 4.5rem;
-  flex-shrink: 0;
-}
-.benchmark-list__name {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+.supporters-section {
+  position: relative;
+  padding: 6rem 1.5rem;
 }
 
-/* ---------------------------------------------------------------------- */
-/* Alumni                                                                  */
-/* ---------------------------------------------------------------------- */
-.alumni-list {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
+.anchor-target {
+  position: relative;
+  top: -90px;
+  visibility: hidden;
+  display: block;
+  height: 0;
 }
-.alumni-list li {
+
+/* Tabs switcher */
+.supporter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.supporter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.15rem;
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--ink);
+  background: rgba(255, 255, 255, 0.45);
   border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  user-select: none;
+}
+
+.supporter-tab:hover {
+  background: rgba(79, 122, 99, 0.1);
+  border-color: var(--terrain);
+  transform: translateY(-1px);
+}
+
+.supporter-tab.is-active {
+  background: var(--navy-900);
+  color: var(--paper);
+  border-color: var(--navy-900);
+  box-shadow: 0 4px 14px rgba(14, 28, 46, 0.16);
+}
+
+.supporter-tab__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(27, 36, 48, 0.08);
+  color: inherit;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.supporter-tab.is-active .supporter-tab__count {
+  background: var(--brass);
+  color: var(--navy-900);
+}
+
+/* Supporters Grid & Cards */
+.supporters-grid {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  transition: opacity 0.25s ease;
+}
+
+.supporters-grid.filter-sponsors {
+  grid-template-columns: 1fr;
+}
+.supporters-grid.filter-sponsors .supporters-pane--alumni {
+  display: none;
+}
+
+.supporters-grid.filter-alumni {
+  grid-template-columns: 1fr;
+}
+.supporters-grid.filter-alumni .supporters-pane--sponsors {
+  display: none;
+}
+
+.supporters-pane {
+  animation: fadeInSupporters 0.3s ease;
+}
+
+@keyframes fadeInSupporters {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.supporter-card {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2.2rem;
+  box-shadow: 0 6px 24px rgba(27, 36, 48, 0.04);
+}
+
+.supporter-card--alumni {
+  display: flex;
+  flex-direction: column;
+}
+
+.supporter-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.supporter-card__tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--terrain);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.supporter-card__tag--brass {
+  color: var(--brass-dim);
+}
+
+.supporter-card__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.supporter-card__count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  background: rgba(27, 36, 48, 0.06);
+  padding: 0.3rem 0.65rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.supporter-card__desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 0 1.6rem;
+}
+
+/* Sponsors Logo Grid */
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.sponsor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1rem 0.8rem 0.75rem;
+  box-shadow: 0 2px 10px rgba(27, 36, 48, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  min-height: 118px;
+}
+
+.sponsor-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--terrain);
+  box-shadow: 0 8px 20px rgba(27, 36, 48, 0.09);
+}
+
+.sponsor-card__img-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.3rem 0.2rem;
+}
+
+.sponsor-card__img {
+  max-width: 100%;
+  max-height: 48px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  filter: contrast(1.02);
+}
+
+.sponsor-card:hover .sponsor-card__img {
+  transform: scale(1.04);
+}
+
+.sponsor-card__caption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 0.5rem;
+  line-height: 1.2;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sponsor-card:hover .sponsor-card__caption {
+  color: var(--ink);
+}
+
+/* Alumni Cards */
+.alumni-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.alumni-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.15rem;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brass);
+  border-radius: 3px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.alumni-card:hover {
+  transform: translateX(4px);
+  border-color: var(--brass);
+  box-shadow: 0 4px 14px rgba(27, 36, 48, 0.06);
+}
+.alumni-card__icon {
+  color: var(--brass);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+.alumni-card__name {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Alumni Connect Box */
+.alumni-connect-box {
+  margin-top: 1.8rem;
+  padding: 1.5rem;
+  background: var(--navy-900);
+  color: var(--paper);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.alumni-connect-box__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+  color: var(--paper);
+}
+.alumni-connect-box__text {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(243, 239, 228, 0.75);
+  margin: 0;
+}
+.alumni-connect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
   padding: 0.55rem 1rem;
+  background: var(--brass);
+  color: var(--navy-900);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.alumni-connect-btn:hover {
+  background: #d8aa53;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 960px) {
+  .supporters-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 /* ---------------------------------------------------------------------- */
@@ -4201,6 +4477,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
   min-height: 850px;
   padding: 7rem 1.5rem 6rem;
+  border-top: 1px solid var(--line-light);
 
   overflow: hidden;
 
@@ -4335,7 +4612,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
   max-width: 1150px;
 
-  height: 500px;
+  height: 530px;
 
   margin: 0 auto;
 
@@ -4370,7 +4647,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   top: 50%;
 
   width: 285px;
-  height: 430px;
+  height: 465px;
 
   overflow: hidden;
 
@@ -4429,7 +4706,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
 
   width: 100%;
-  height: 300px;
+  height: 270px;
 
   overflow: hidden;
 
@@ -4526,14 +4803,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .bearer-card__content {
   padding:
-    1.2rem
-    1.4rem;
+    1.1rem
+    1.3rem
+    .9rem;
 }
 
 
 .bearer-card__role {
   margin:
-    0 0 .4rem;
+    0 0 .3rem;
 
   color: var(--brass);
 
@@ -4549,15 +4827,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .bearer-card__name {
   margin:
-    0 0 .4rem;
+    0 0 .3rem;
 
   color: var(--paper);
 
   font-family: var(--font-display);
 
-  font-size: 1.55rem;
+  font-size: 1.3rem;
 
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 
@@ -4580,9 +4858,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .bearer-card__socials {
   display: flex;
 
-  gap: .55rem;
+  gap: .5rem;
 
-  margin-top: .9rem;
+  margin-top: .75rem;
 }
 
 
@@ -4824,18 +5102,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 
   .bearer-carousel {
-    height: 455px;
+    height: 490px;
   }
 
 
   .bearer-card {
-    width: 250px;
-    height: 405px;
+    width: 255px;
+    height: 435px;
   }
 
 
   .bearer-card__image-wrap {
-    height: 270px;
+    height: 245px;
   }
 
 
@@ -4863,19 +5141,23 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 @media (max-width: 430px) {
 
+  .bearer-carousel {
+    height: 470px;
+  }
+
   .bearer-card {
-    width: 225px;
-    height: 395px;
+    width: 235px;
+    height: 415px;
   }
 
 
   .bearer-card__image-wrap {
-    height: 260px;
+    height: 230px;
   }
 
 
   .bearer-card__name {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
   }
 
 
@@ -5065,21 +5347,20 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------------------------------------------------------------
    SOCIAL AREA
-   The HTML has been removed, so this prevents any old styling
-   from affecting the card layout.
    --------------------------------------------------------------- */
 
 .office-bearers .bearer-card__socials {
-  display: none !important;
+  display: flex;
+  align-items: center;
 }
 
 
 /* ---------------------------------------------------------------
-   CARD CONTENT — no empty social-icon spacing
+   CARD CONTENT
    --------------------------------------------------------------- */
 
 .office-bearers .bearer-card__content {
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.1rem;
 }
 
 
