@@ -1,0 +1,3220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Society of Geoinformatics Engineers</title>
+<meta name="description" content="Society of Geoinformatics Engineers (SGE) — student-led geospatial technology association at the Institute of Remote Sensing, CEG, Anna University.">
+<link rel="icon" href="static/images/logo.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+
+<div class="grain"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top">
+      <img src="static/images/logo.png" alt="SGE emblem" class="nav__logo">
+      <span class="nav__brand-text">
+        <span class="nav__brand-short">SGE</span>
+        <span class="nav__brand-long">Society of Geoinformatics Engineers</span>
+      </span>
+    </a>
+    <nav class="nav__links" id="nav-links">
+      
+      <a href="#about">About</a>
+      
+      <a href="#vision">Vision &amp; Mission</a>
+      
+      <a href="#leadership">Leadership</a>
+      
+      <a href="#events">Events</a>
+      
+      <a href="#gallery">Gallery</a>
+      
+      <a href="#office-bearers">Office Bearers</a>
+      
+      <a href="#sponsors-alumni">Sponsors &amp; Alumni</a>
+      
+    </nav>
+    <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <a href="celestia.html" class="stars-banner" style="display: block; width: 100%; text-align: center; color: var(--paper); padding: 10px 20px; font-weight: 500; font-family: var(--font-body); font-size: 1.05rem; text-decoration: none; border-bottom: 1px solid rgba(243, 239, 228, 0.1); box-shadow: 0 4px 12px rgba(0,0,0,0.25); display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <img src="static/images/logo_celestia-removebg-preview.png" alt="Celestia '26 Logo" style="height: 55px; object-fit: contain;">
+    <span style="letter-spacing: 0.5px;">Click here to discover more!</span>
+    <span style="background: var(--brass); color: var(--navy-900); padding: 6px 18px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.2s;">Explore</span>
+  </a>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero__contours" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M -100 700 Q 250 600 550 680 T 1100 620 T 1600 700" />
+        <path d="M -100 620 Q 280 520 560 600 T 1120 540 T 1600 610" />
+        <path d="M -100 540 Q 300 440 580 520 T 1140 470 T 1600 530" />
+        <path d="M -100 460 Q 320 370 600 440 T 1160 400 T 1600 450" />
+        <path d="M -100 780 Q 230 690 540 760 T 1080 700 T 1600 780" />
+        <path d="M -100 860 Q 220 780 520 840 T 1050 790 T 1600 860" />
+      </g>
+    </svg>
+    <div class="hero__inner">
+      
+      <h1 class="hero__title">Reading the earth,<br>one layer at a time.</h1>
+      <p class="hero__lede">Society of Geoinformatics Engineers (SGE) is the student-led geospatial
+        association of the Institute of Remote Sensing, College of Engineering Guindy, Anna
+        University — working across Remote Sensing, GIS, Earth Observation and Surveying.</p>
+      <div class="hero__actions">
+        <a href="#events" class="btn btn--primary">See our events</a>
+        <a href="#about" class="btn btn--ghost">About SGE</a>
+      </div>
+    </div>
+    <div class="hero__compass" aria-hidden="true">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        <circle cx="100" cy="100" r="66" fill="none" stroke="currentColor" stroke-width="1" opacity="0.35"/>
+        <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+        <line x1="100" y1="8" x2="100" y2="192" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+        <line x1="8" y1="100" x2="192" y2="100" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+        <path
+          id="compass-n-arrow"
+          d="M100 20 L108 100 L100 96 L92 100 Z"
+          fill="var(--redline)"
+        />
+        <text x="100" y="14" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">N</text>
+        <text x="100" y="196" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">S</text>
+        <text x="6" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">W</text>
+        <text x="194" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="currentColor">E</text>
+      </svg>
+    </div>
+  </section>
+
+ <!-- ABOUT -->
+<section class="section section--paper" id="about">
+
+  <div class="section__grid section__grid--about">
+
+    <div class="section__col">
+      <p class="eyebrow">About the society</p>
+
+      <h2 class="section__title">
+        Built inside the Institute of Remote Sensing
+      </h2>
+
+      <p class="body-text">
+        The Society of Geoinformatics Engineers (SGE), a student-led organisation under the Institute of Remote Sensing (IRS), College of Engineering Guindy, Anna University, was formed with the main aim of promoting knowledge, innovation, and professional growth in the field of Geoinformatics. As part of a leading institute in Remote Sensing and Geoinformatics education, SGE offers students a platform to explore and develop their expertise in Remote Sensing, Geographic Information Systems (GIS), Earth Observation, Surveying, and other emerging geospatial technologies. The association supports technical learning, research, teamwork, and industry engagement through various activities such as workshops, expert talks, competitions, and major events like GEOHORIZON and CELESTIA. Comprised of both students and faculty members, SGE works to connect academic learning with practical geospatial applications and help shape the future of geospatial professionals and innovators.
+      </p>
+    </div>
+
+
+    <!-- ABOUT IMAGE / MAP -->
+    <div class="about__figure">
+
+      <div class="about__visual" id="about-visual">
+
+        <!-- Original image -->
+        <img
+          id="about-image"
+          src="static/images/irs_building.jpeg"
+          alt="Institute of Remote Sensing building, College of Engineering Guindy, Anna University"
+          class="about__photo"
+        >
+
+
+        <!-- Interactive map -->
+        <div
+          id="about-map"
+          class="about__map"
+          aria-hidden="true"
+        ></div>
+
+
+        <!-- SGE MAP TOGGLE -->
+        <button
+          class="about__badge"
+          id="about-map-toggle"
+          type="button"
+          aria-label="Show Institute of Remote Sensing location on map"
+          aria-pressed="false"
+        >
+          <img
+            src="static/images/logo.png"
+            alt="SGE emblem"
+          >
+        </button>
+
+      </div>
+
+
+      <p class="figure-caption">
+        Institute of Remote Sensing, College of Engineering Guindy, Anna University
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- VISION & MISSION -->
+<!-- VISION & MISSION -->
+<section class="section section--vision-mission" id="vision">
+
+  <!-- Contour background -->
+  <svg
+    class="vision__contours"
+    viewBox="0 0 1600 700"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+
+    <defs>
+
+      <!-- Contour fade -->
+      <radialGradient
+        id="visionContourFade"
+        cx="50%"
+        cy="50%"
+        r="72%"
+      >
+        <stop
+          offset="0%"
+          stop-color="white"
+          stop-opacity="0"
+        />
+
+        <stop
+          offset="38%"
+          stop-color="white"
+          stop-opacity="0.02"
+        />
+
+        <stop
+          offset="68%"
+          stop-color="white"
+          stop-opacity="0.45"
+        />
+
+        <stop
+          offset="100%"
+          stop-color="white"
+          stop-opacity="1"
+        />
+      </radialGradient>
+
+      <mask id="visionContourMask">
+        <rect
+          width="1600"
+          height="700"
+          fill="url(#visionContourFade)"
+        />
+      </mask>
+
+    </defs>
+
+
+    <!-- Topographic contour lines -->
+    <g
+      mask="url(#visionContourMask)"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1"
+    >
+
+      <path d="M-150 130 C220 -10 500 220 820 80 S1390 20 1770 160" />
+
+      <path d="M-160 190 C220 40 520 280 850 140 S1410 80 1780 220" />
+
+      <path d="M-170 250 C230 100 540 340 880 200 S1430 140 1790 280" />
+
+      <path d="M-180 310 C240 160 560 400 910 260 S1450 200 1800 340" />
+
+      <path d="M-190 370 C250 220 580 460 940 320 S1470 260 1810 400" />
+
+      <path d="M-200 430 C260 280 600 520 970 380 S1490 320 1820 460" />
+
+      <path d="M-210 490 C270 340 620 580 1000 440 S1510 380 1830 520" />
+
+      <path d="M-220 550 C280 400 640 640 1030 500 S1530 440 1840 580" />
+
+      <path d="M-230 610 C290 460 660 700 1060 560 S1550 500 1850 640" />
+
+      <path d="M-240 670 C300 520 680 760 1090 620 S1570 560 1860 700" />
+
+    </g>
+
+  </svg>
+
+
+  <!-- Vision / Mission content -->
+  <div class="section__grid section__grid--split">
+
+    <!-- VISION -->
+    <div class="split__col vision__item">
+
+      <p class="eyebrow eyebrow--light">
+        Vision
+      </p>
+
+      <h3 class="split__title">
+        A forward-thinking geospatial culture
+      </h3>
+
+      <p class="body-text body-text--light">
+        Given that Geoinformatics is a rapidly advancing and influential field, SGE is committed to creating a forward-thinking environment that supports knowledge sharing, technical learning, and innovation for students and faculty. The association encourages students to explore different areas of Geoinformatics through technical sessions, workshops, expert discussions, and hands-on activities, building a learning culture that is student-driven and supported by faculty and industry experts. SGE also aims to bring together individuals from diverse backgrounds who share a passion for Geoinformatics, fostering collaboration, research, and technological progress while inspiring students to contribute to a smarter, more sustainable, and geospatially advanced society.
+      </p>
+
+    </div>
+
+
+    <!-- CENTER DIVIDER -->
+    <div
+      class="split__divider"
+      aria-hidden="true"
+    ></div>
+
+
+    <!-- MISSION -->
+    <div class="split__col mission__item">
+
+      <p class="eyebrow eyebrow--light">
+        Mission
+      </p>
+
+      <h3 class="split__title">
+        From classroom learning to real-world application
+      </h3>
+
+      <p class="body-text body-text--light">
+        SGE aims to promote excellence in Geoinformatics by offering students opportunities to improve their technical knowledge, practical skills, and understanding of newer geospatial technologies. The association focuses on creating an interactive and collaborative environment through workshops, technical sessions, competitions, expert engagements, and various academic programs. It encourages students to get involved in research, innovation, and knowledge-sharing while connecting them with academicians, industry professionals, researchers, and other geospatial enthusiasts. These initiatives help bridge the gap between classroom learning and real-world geospatial applications, preparing students to tackle current challenges using geospatial technologies. SGE remains dedicated to building a community of skilled, creative, and socially responsible geospatial professionals who can make meaningful contributions to the geospatial community.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- LEADERSHIP NOTES -->
+  <section class="section leadership-section" id="leadership">
+    <div class="section__head">
+      <p class="eyebrow">From the leadership</p>
+      <h2 class="section__title">Notes from SGE</h2>
+      <p class="body-text">
+        Messages from the leaders who guide and support the Society of
+        Geoinformatics Engineers.
+      </p>
+    </div>
+
+    <div class="leadership-carousel" aria-label="Leadership notes">
+      <div class="leadership-track">
+
+        
+        <article class="leader-card">
+          <div class="leader-card__image">
+            <img
+              src="static/images/director.png"
+              alt="Dr. R Vidhya"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="leader-card__content">
+            <p class="leader-card__role">Director&#39;s Note</p>
+
+            <h3 class="leader-card__name">
+              Dr. R Vidhya
+            </h3>
+
+            <p class="leader-card__designation">
+              Director &amp; Professor, Institute of Remote Sensing
+            </p>
+
+            <div class="leader-card__rule"></div>
+
+            <p class="leader-card__note">
+               &#39;The Society of Geoinformatics Engineers (SGE), established in 2004, has evolved into a vibrant platform for innovation, learning, collaboration, and professional exposure in Geoinformatics. As geospatial technologies continue to play an increasingly importantrole in national development and decision-making, SGE provides students withopportunities to learn, explore, and contribute to this dynamic fieldI encourage every student to dream big, embracechallenges, and pursue excellence with dedication, carrying forward SGE legacy oflearning, innovation, and meaningful contribution to society.&#39; 
+            </p>
+          </div>
+        </article>
+        
+        <article class="leader-card">
+          <div class="leader-card__image">
+            <img
+              src="static/images/president.jpeg"
+              alt="Dr. Shanmugam"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="leader-card__content">
+            <p class="leader-card__role">President&#39;s Note</p>
+
+            <h3 class="leader-card__name">
+              Dr. Shanmugam
+            </h3>
+
+            <p class="leader-card__designation">
+              President, SGE
+            </p>
+
+            <div class="leader-card__rule"></div>
+
+            <p class="leader-card__note">
+               &#39;SGE is a community driven by curiosity, collaboration and a passion for geospatial technology. Our aim is to create opportunities for students to learn beyond the classroom, exchange ideas and build solutions that connect technology with real-world challenges.&#39; 
+            </p>
+          </div>
+        </article>
+        
+        <article class="leader-card">
+          <div class="leader-card__image">
+            <img
+              src="static/images/treasurer.jpeg"
+              alt="Dr. Navamunniyamal"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="leader-card__content">
+            <p class="leader-card__role">Treasurer&#39;s Note</p>
+
+            <h3 class="leader-card__name">
+              Dr. Navamunniyamal
+            </h3>
+
+            <p class="leader-card__designation">
+              Treasurer, SGE
+            </p>
+
+            <div class="leader-card__rule"></div>
+
+            <p class="leader-card__note">
+               &#39;Every successful initiative at SGE is made possible through the collective effort of our students, faculty, alumni and partners. We remain committed to supporting meaningful events and activities that contribute to the growth of the geospatial community.&#39; 
+            </p>
+          </div>
+        </article>
+        
+
+        <!-- Duplicate set for seamless infinite scrolling -->
+        
+        <article class="leader-card" aria-hidden="true">
+          <div class="leader-card__image">
+            <img
+              src="static/images/director.png"
+              alt=""
+              loading="lazy"
+            >
+          </div>
+
+          <div class="leader-card__content">
+            <p class="leader-card__role">Director&#39;s Note</p>
+
+            <h3 class="leader-card__name">
+              Dr. R Vidhya
+            </h3>
+
+            <p class="leader-card__designation">
+              Director &amp; Professor, Institute of Remote Sensing
+            </p>
+
+            <div class="leader-card__rule"></div>
+
+            <p class="leader-card__note">
+               &#39;The Society of Geoinformatics Engineers (SGE), established in 2004, has evolved into a vibrant platform for innovation, learning, collaboration, and professional exposure in Geoinformatics. As geospatial technologies continue to play an increasingly importantrole in national development and decision-making, SGE provides students withopportunities to learn, explore, and contribute to this dynamic fieldI encourage every student to dream big, embracechallenges, and pursue excellence with dedication, carrying forward SGE legacy oflearning, innovation, and meaningful contribution to society.&#39; 
+            </p>
+          </div>
+        </article>
+        
+        <article class="leader-card" aria-hidden="true">
+          <div class="leader-card__image">
+            <img
+              src="static/images/president.jpeg"
+              alt=""
+              loading="lazy"
+            >
+          </div>
+
+          <div class="leader-card__content">
+            <p class="leader-card__role">President&#39;s Note</p>
+
+            <h3 class="leader-card__name">
+              Dr. Shanmugam
+            </h3>
+
+            <p class="leader-card__designation">
+              President, SGE
+            </p>
+
+            <div class="leader-card__rule"></div>
+
+            <p class="leader-card__note">
+               &#39;SGE is a community driven by curiosity, collaboration and a passion for geospatial technology. Our aim is to create opportunities for students to learn beyond the classroom, exchange ideas and build solutions that connect technology with real-world challenges.&#39; 
+            </p>
+          </div>
+        </article>
+        
+        <article class="leader-card" aria-hidden="true">
+          <div class="leader-card__image">
+            <img
+              src="static/images/treasurer.jpeg"
+              alt=""
+              loading="lazy"
+            >
+          </div>
+
+          <div class="leader-card__content">
+            <p class="leader-card__role">Treasurer&#39;s Note</p>
+
+            <h3 class="leader-card__name">
+              Dr. Navamunniyamal
+            </h3>
+
+            <p class="leader-card__designation">
+              Treasurer, SGE
+            </p>
+
+            <div class="leader-card__rule"></div>
+
+            <p class="leader-card__note">
+               &#39;Every successful initiative at SGE is made possible through the collective effort of our students, faculty, alumni and partners. We remain committed to supporting meaningful events and activities that contribute to the growth of the geospatial community.&#39; 
+            </p>
+          </div>
+        </article>
+        
+
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================================
+     EVENTS
+     ============================================================ -->
+
+<!-- EVENTS -->
+<!-- EVENTS -->
+<section class="section section--events" id="events">
+
+  <!-- Decorative contour lines -->
+  <svg
+    class="events__contours"
+    viewBox="0 0 1600 1100"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <g
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1"
+    >
+      <path d="M-100 120 C180 20 400 230 690 110 S1240 20 1700 150" />
+      <path d="M-100 230 C180 130 400 340 690 220 S1240 130 1700 260" />
+      <path d="M-100 340 C180 240 400 450 690 330 S1240 240 1700 370" />
+      <path d="M-100 450 C180 350 400 560 690 440 S1240 350 1700 480" />
+      <path d="M-100 560 C180 460 400 670 690 550 S1240 460 1700 590" />
+      <path d="M-100 670 C180 570 400 780 690 660 S1240 570 1700 700" />
+      <path d="M-100 780 C180 680 400 890 690 770 S1240 680 1700 810" />
+      <path d="M-100 890 C180 790 400 1000 690 880 S1240 790 1700 920" />
+      <path d="M-100 1000 C180 900 400 1110 690 990 S1240 900 1700 1030" />
+    </g>
+  </svg>
+
+
+  <!-- Section heading -->
+  <div class="section__head events__head">
+
+    <p class="eyebrow eyebrow--light">
+      What we run
+    </p>
+
+    <h2 class="section__title section__title--light">
+      Events
+    </h2>
+
+  </div>
+
+
+  <!-- Event cards -->
+  <div class="events__list">
+
+    
+
+    <article
+      class="event "
+    >
+
+      <!-- IMAGE GROUP -->
+      <div class="event__media">
+
+        <div class="event__images">
+
+          
+
+          <figure
+            class="event__img event__img--1"
+          >
+
+            <img
+              src="static/images/geohorizon_1.jpg"
+              alt="GEOHORIZON event"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+          <figure
+            class="event__img event__img--2"
+          >
+
+            <img
+              src="static/images/geohorizon_2.jpeg"
+              alt="GEOHORIZON inaugural session"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+          <figure
+            class="event__img event__img--3"
+          >
+
+            <img
+              src="static/images/geohorizon_3.jpg"
+              alt="GEOHORIZON audience"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+        </div>
+
+      </div>
+
+
+      <!-- TEXT -->
+      <div class="event__body">
+
+        <p class="event__meta">
+          01 · Inter-college technical symposium · March 14–16, 2026
+        </p>
+
+        <h3 class="event__name">
+          GEOHORIZON
+        </h3>
+
+        <p class="event__tagline">
+          GEOVERSE: Connecting Data, Intelligence and Innovation
+        </p>
+
+        <p class="body-text">
+          GEOHORIZON is a key event organised by the Society of Geoinformatics Engineers (SGE), part of the Institute of Remote Sensing, College of Engineering Guindy, Anna University. This event provides an exciting platform for students to engage with the growing and diverse areas of Geoinformatics, Remote Sensing, GIS, Earth Observation, and related technologies. Through a mix of technical activities, workshops, competitions, expert talks, and knowledge-sharing sessions, GEOHORIZON helps students refine their technical skills, exchange ideas, and discover new applications of geospatial technologies.
+        </p>
+
+        <ul class="event__facts">
+
+          
+
+          <li>
+            20+ tech &amp; non-tech events
+          </li>
+
+          
+
+          <li>
+            ₹120,000 prize pool
+          </li>
+
+          
+
+          <li>
+            Open to all colleges in India
+          </li>
+
+          
+
+        </ul>
+
+      </div>
+
+    </article>
+
+    
+
+    <article
+      class="event event--reverse"
+    >
+
+      <!-- IMAGE GROUP -->
+      <div class="event__media">
+
+        <div class="event__images">
+
+          
+
+          <figure
+            class="event__img event__img--1"
+          >
+
+            <img
+              src="static/images/celestia_1.jpg"
+              alt="CELESTIA event"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+          <figure
+            class="event__img event__img--2"
+          >
+
+            <img
+              src="static/images/celestia_2.jpeg"
+              alt="CELESTIA technical session"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+          <figure
+            class="event__img event__img--3"
+          >
+
+            <img
+              src="static/images/celestia_3.jpg"
+              alt="CELESTIA programme"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+        </div>
+
+      </div>
+
+
+      <!-- TEXT -->
+      <div class="event__body">
+
+        <p class="event__meta">
+          02 · Held alongside National Space Week · October 14–15
+        </p>
+
+        <h3 class="event__name">
+          CELESTIA
+        </h3>
+
+        <p class="event__tagline">
+          Where space science meets geospatial technology
+        </p>
+
+        <p class="body-text">
+          CELESTIA is a student-focused event organised by the Society of Geoinformatics Engineers (SGE), bringing together the exciting fields of space science, Earth observation, Remote Sensing, and Geospatial Technology. The event seeks to raise awareness and spark interest among students about the role of space and satellite technologies in solving real-world problems. Through technical sessions, expert discussions, competitions, and engaging activities, CELESTIA allows students to learn, collaborate, and explore new possibilities in the space and geospatial sectors.
+        </p>
+
+        <ul class="event__facts">
+
+          
+
+          <li>
+            Technical sessions &amp; expert talks
+          </li>
+
+          
+
+          <li>
+            Student competitions
+          </li>
+
+          
+
+          <li>
+            Run with National Space Week
+          </li>
+
+          
+
+        </ul>
+
+      </div>
+
+    </article>
+
+    
+
+    <article
+      class="event "
+    >
+
+      <!-- IMAGE GROUP -->
+      <div class="event__media">
+
+        <div class="event__images">
+
+          
+
+          <figure
+            class="event__img event__img--1"
+          >
+
+            <img
+              src="static/images/spaceweek_1.jpeg"
+              alt="ISRO Space on Wheels exhibition bus"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+          <figure
+            class="event__img event__img--2"
+          >
+
+            <img
+              src="static/images/spaceweek_2.jpeg"
+              alt="ISRO launch vehicle models"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+          <figure
+            class="event__img event__img--3"
+          >
+
+            <img
+              src="static/images/spaceweek_3.jpg"
+              alt="Space Week outreach programme"
+              decoding="async"
+            >
+
+          </figure>
+
+          
+
+        </div>
+
+      </div>
+
+
+      <!-- TEXT -->
+      <div class="event__body">
+
+        <p class="event__meta">
+          03 · Campus &amp; school outreach initiative
+        </p>
+
+        <h3 class="event__name">
+          SPACE WEEK
+        </h3>
+
+        <p class="event__tagline">
+          An outreach programme for the next generation
+        </p>
+
+        <p class="body-text">
+          SPACE WEEK is an outreach program designed to raise awareness and inspire enthusiasm for space science, satellite technology, Earth observation, and their various geospatial applications. This initiative gives students the chance to understand the importance of space technology in fields such as environmental monitoring, disaster management, agriculture, urban planning, climate studies, and navigation.
+        </p>
+
+        <ul class="event__facts">
+
+          
+
+          <li>
+            ISRO &#39;Space on Wheels&#39; exhibition bus
+          </li>
+
+          
+
+          <li>
+            School outreach sessions
+          </li>
+
+          
+
+          <li>
+            Hands-on ISRO exhibits
+          </li>
+
+          
+
+        </ul>
+
+      </div>
+
+    </article>
+
+    
+
+  </div>
+
+</section>
+
+  <!-- GALLERY -->
+ <!-- GALLERY -->
+<section class="section section--dark" id="gallery">
+
+  <div class="section__head">
+    <p class="eyebrow eyebrow--light">From the field</p>
+    <h2 class="section__title section__title--light">Gallery</h2>
+  </div>
+
+  <div class="gallery-carousel">
+
+    <!-- WEST -->
+    <button
+      class="gallery-arrow gallery-arrow--west"
+      id="gallery-prev"
+      type="button"
+      aria-label="Previous gallery page"
+    >
+      W
+    </button>
+
+
+    <!-- GALLERY VIEWPORT -->
+    <div class="gallery-viewport">
+
+      <div class="gallery-track" id="gallery-track">
+
+        
+
+          
+          <div class="gallery-page">
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/geohorizon_2.jpeg"
+                alt="GEOHORIZON inaugural session"
+                loading="lazy"
+              >
+
+              <figcaption>
+                GEOHORIZON inaugural session
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/celestia_2.jpeg"
+                alt="CELESTIA technical session"
+                loading="lazy"
+              >
+
+              <figcaption>
+                CELESTIA technical session
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/spaceweek_1.jpeg"
+                alt="Space on Wheels exhibition bus"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Space on Wheels exhibition bus
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/spaceweek_3.jpg"
+                alt="ISRO launch vehicle models"
+                loading="lazy"
+              >
+
+              <figcaption>
+                ISRO launch vehicle models
+              </figcaption>
+
+            </figure>
+
+          
+          </div>
+          
+
+        
+
+          
+          <div class="gallery-page">
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/spaceweek_expert.jpeg"
+                alt="Expert interaction with school students"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Expert interaction with school students
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/spaceweek_students.jpeg"
+                alt="School students at Space Week outreach"
+                loading="lazy"
+              >
+
+              <figcaption>
+                School students at Space Week outreach
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/irs_building.jpeg"
+                alt="Institute of Remote Sensing, CEG"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Institute of Remote Sensing, CEG
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/trimble_meet.jpg"
+                alt="Trimble Team Meet"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Trimble Team Meet
+              </figcaption>
+
+            </figure>
+
+          
+          </div>
+          
+
+        
+
+          
+          <div class="gallery-page">
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/SGE_inaugration.jpg"
+                alt="SGE Inaugration 2025"
+                loading="lazy"
+              >
+
+              <figcaption>
+                SGE Inaugration 2025
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/mapjam.jpg"
+                alt="Mapjam Event - GeoHorizon&#39;26"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Mapjam Event - GeoHorizon&#39;26
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/lifeskill_workshop.jpg"
+                alt="Lifeskill Workshop - GeoHorizon&#39;26"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Lifeskill Workshop - GeoHorizon&#39;26
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/ideathon.jpg"
+                alt="Ideathon Event - GeoHorizon&#39;26"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Ideathon Event - GeoHorizon&#39;26
+              </figcaption>
+
+            </figure>
+
+          
+          </div>
+          
+
+        
+
+          
+          <div class="gallery-page">
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/healthGIS_workshop.jpg"
+                alt="HealthGIS Workshop"
+                loading="lazy"
+              >
+
+              <figcaption>
+                HealthGIS Workshop
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/geonex.jpg"
+                alt="GeoNex Hackathon - GeoHorizon&#39;26"
+                loading="lazy"
+              >
+
+              <figcaption>
+                GeoNex Hackathon - GeoHorizon&#39;26
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/geonex_panel.jpg"
+                alt="GeoNex Hackathon Judges"
+                loading="lazy"
+              >
+
+              <figcaption>
+                GeoNex Hackathon Judges
+              </figcaption>
+
+            </figure>
+
+          
+
+        
+
+          
+
+            <figure class="gallery__item">
+
+              <img
+                src="static/images/celestia_event.jpg"
+                alt="Celestia&#39;25 events session"
+                loading="lazy"
+              >
+
+              <figcaption>
+                Celestia&#39;25 events session
+              </figcaption>
+
+            </figure>
+
+          
+          </div>
+          
+
+        
+
+      </div>
+
+    </div>
+
+
+    <!-- EAST -->
+    <button
+      class="gallery-arrow gallery-arrow--east"
+      id="gallery-next"
+      type="button"
+      aria-label="Next gallery page"
+    >
+      E
+    </button>
+
+  </div>
+
+
+  <!-- PAGE INDICATORS -->
+  <div
+    class="gallery-pagination"
+    id="gallery-pagination"
+    aria-label="Gallery pages"
+  ></div>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- STUDENT OFFICE BEARERS                                      -->
+<!-- ============================================================ -->
+
+<section class="office-bearers" id="office-bearers">
+
+  <div class="office-bearers__header reveal">
+
+    <p class="eyebrow eyebrow--light">
+      Student leadership
+    </p>
+
+    <h2 class="office-bearers__title">
+      Student Office Bearers
+    </h2>
+
+    <p class="office-bearers__subtitle">
+      Meet the students who lead SGE, build the community,
+      organise events and shape the future of Geoinformatics.
+    </p>
+
+  </div>
+
+
+  <!-- 3D CAROUSEL -->
+
+  <div class="bearer-carousel">
+
+    <!-- LEFT ARROW -->
+
+    <button
+      type="button"
+      class="bearer-arrow bearer-arrow--left"
+      id="bearer-prev"
+      aria-label="Previous office bearer">
+
+      <span>←</span>
+
+    </button>
+
+
+    <!-- CARD STAGE -->
+
+    <div class="bearer-stage">
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="0">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/sanjaykumar_e.png"
+            alt="SANJAYKUMAR E - General Secretary"
+            class="bearer-card__image"
+            style="object-position: center 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            01
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            General Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            SANJAYKUMAR E
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/e-sanjaykumar"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="SANJAYKUMAR E on LinkedIn"
+              title="LinkedIn: SANJAYKUMAR E">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+
+            
+            <a
+              href="mailto:esanjaykumar561@gmail.com"
+              class="bearer-social"
+              aria-label="Email SANJAYKUMAR E"
+              title="Email: esanjaykumar561@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+916369471476"
+              class="bearer-social"
+              aria-label="Call SANJAYKUMAR E"
+              title="Contact: +91 6369471476">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="1">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/keerthika_s.jpg"
+            alt="KEERTHIKA S - General Secretary"
+            class="bearer-card__image"
+            style="object-position: center 15%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            02
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            General Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            KEERTHIKA S
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/keerthika-sankaralingam-200619752210k"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="KEERTHIKA S on LinkedIn"
+              title="LinkedIn: KEERTHIKA S">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/keerthika_sankaralingam"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="KEERTHIKA S on Instagram"
+              title="Instagram: KEERTHIKA S">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:keerthikasankaralingam@gmail.com"
+              class="bearer-social"
+              aria-label="Email KEERTHIKA S"
+              title="Email: keerthikasankaralingam@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+916374126769"
+              class="bearer-social"
+              aria-label="Call KEERTHIKA S"
+              title="Contact: +91 6374126769">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="2">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/semmozhi_selvam_sp.png"
+            alt="SEMMOZHI SELVAM S P - Executive Secretary"
+            class="bearer-card__image"
+            style="object-position: center 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            03
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Executive Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            SEMMOZHI SELVAM S P
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/semmozhi-selvam-sp-54224a253"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="SEMMOZHI SELVAM S P on LinkedIn"
+              title="LinkedIn: SEMMOZHI SELVAM S P">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/pookie_mozhi"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="SEMMOZHI SELVAM S P on Instagram"
+              title="Instagram: SEMMOZHI SELVAM S P">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:semmozhiselvamsp@gmail.com"
+              class="bearer-social"
+              aria-label="Email SEMMOZHI SELVAM S P"
+              title="Email: semmozhiselvamsp@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+916382396276"
+              class="bearer-social"
+              aria-label="Call SEMMOZHI SELVAM S P"
+              title="Contact: +91 6382396276">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="3">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/monika_devi_e.jpg"
+            alt="MONIKA DEVI E - Executive Secretary"
+            class="bearer-card__image"
+            style="object-position: center 15%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            04
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Executive Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            MONIKA DEVI E
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/monika-devi-144886367"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="MONIKA DEVI E on LinkedIn"
+              title="LinkedIn: MONIKA DEVI E">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/im_mdtan_14"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="MONIKA DEVI E on Instagram"
+              title="Instagram: MONIKA DEVI E">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:monikadelango@gmail.com"
+              class="bearer-social"
+              aria-label="Email MONIKA DEVI E"
+              title="Email: monikadelango@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+917200345017"
+              class="bearer-social"
+              aria-label="Call MONIKA DEVI E"
+              title="Contact: +91 7200345017">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="4">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/rathinam_ramasamy_j.jpg"
+            alt="RATHINAM RAMASAMY J - Executive Secretary"
+            class="bearer-card__image"
+            style="object-position: center 15%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            05
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Executive Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            RATHINAM RAMASAMY J
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://linkedin.com/in/rathinam-ramasamy-j"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="RATHINAM RAMASAMY J on LinkedIn"
+              title="LinkedIn: RATHINAM RAMASAMY J">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/rathinam._.pvt"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="RATHINAM RAMASAMY J on Instagram"
+              title="Instagram: RATHINAM RAMASAMY J">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:rathinamramasamyj@gmail.com"
+              class="bearer-social"
+              aria-label="Email RATHINAM RAMASAMY J"
+              title="Email: rathinamramasamyj@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+918807285869"
+              class="bearer-social"
+              aria-label="Call RATHINAM RAMASAMY J"
+              title="Contact: +91 8807285869">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="5">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/pooja_p.jpg"
+            alt="POOJA P - Executive Secretary"
+            class="bearer-card__image"
+            style="object-position: center 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            06
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Executive Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            POOJA P
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/pooja2027"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="POOJA P on LinkedIn"
+              title="LinkedIn: POOJA P">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/_liorie._"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="POOJA P on Instagram"
+              title="Instagram: POOJA P">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:poojaa2027@gmail.com"
+              class="bearer-social"
+              aria-label="Email POOJA P"
+              title="Email: poojaa2027@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+919629053013"
+              class="bearer-social"
+              aria-label="Call POOJA P"
+              title="Contact: +91 9629053013">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="6">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/midhun_e.jpg"
+            alt="MIDHUN E - Executive Secretary"
+            class="bearer-card__image"
+            style="object-position: 60% 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            07
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Executive Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            MIDHUN E
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/midddhun"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="MIDHUN E on LinkedIn"
+              title="LinkedIn: MIDHUN E">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/m.i.d.h.un_"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="MIDHUN E on Instagram"
+              title="Instagram: MIDHUN E">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:midddhun@gmail.com"
+              class="bearer-social"
+              aria-label="Email MIDHUN E"
+              title="Email: midddhun@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+919345877928"
+              class="bearer-social"
+              aria-label="Call MIDHUN E"
+              title="Contact: +91 9345877928">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="7">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/ragul_adhithya_p.jpg"
+            alt="RAGUL ADHITHYA P - Executive Secretary"
+            class="bearer-card__image"
+            style="object-position: center 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            08
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Executive Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            RAGUL ADHITHYA P
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/ragulathithya-ponniah-015567331/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="RAGUL ADHITHYA P on LinkedIn"
+              title="LinkedIn: RAGUL ADHITHYA P">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+
+            
+
+            
+            <a
+              href="tel:+919994774479"
+              class="bearer-social"
+              aria-label="Call RAGUL ADHITHYA P"
+              title="Contact: +91 9994774479">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="8">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/sanjana_b.jpg"
+            alt="SANJANA B - Secretary"
+            class="bearer-card__image"
+            style="object-position: center 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            09
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            SANJANA B
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+
+            
+
+            
+
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="9">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/kalai_chezhiyan_n.jpg"
+            alt="KALAI CHEZHIYAN N - Secretary"
+            class="bearer-card__image"
+            style="object-position: center 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            10
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            KALAI CHEZHIYAN N
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/kalai-chezhiyan-834b12329"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="KALAI CHEZHIYAN N on LinkedIn"
+              title="LinkedIn: KALAI CHEZHIYAN N">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/kalai_cr7_"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="KALAI CHEZHIYAN N on Instagram"
+              title="Instagram: KALAI CHEZHIYAN N">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:kalaichezhiyan37@gmail.com"
+              class="bearer-social"
+              aria-label="Email KALAI CHEZHIYAN N"
+              title="Email: kalaichezhiyan37@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+919677789964"
+              class="bearer-social"
+              aria-label="Call KALAI CHEZHIYAN N"
+              title="Contact: +91 9677789964">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="10">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/dhanusree_g.jpg"
+            alt="DHANUSREE G - Secretary (PG)"
+            class="bearer-card__image"
+            style="object-position: center 12%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            11
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Secretary (PG)
+          </p>
+
+          <h3 class="bearer-card__name">
+            DHANUSREE G
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · PG · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+
+            
+
+            
+
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="11">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/tharun_venkat_m.svg"
+            alt="THARUN VENKAT M - Secretary (PG)"
+            class="bearer-card__image"
+            style="object-position: center center;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            12
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Secretary (PG)
+          </p>
+
+          <h3 class="bearer-card__name">
+            THARUN VENKAT M
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · PG · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+
+            
+
+            
+
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="12">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/sindhiya_b.jpg"
+            alt="SINDHIYA B - Joint Secretary"
+            class="bearer-card__image"
+            style="object-position: center 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            13
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Joint Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            SINDHIYA B
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/sindhiya-poongodi-27a952387"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="SINDHIYA B on LinkedIn"
+              title="LinkedIn: SINDHIYA B">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+
+            
+            <a
+              href="mailto:poongodisindhiya@gmail.com"
+              class="bearer-social"
+              aria-label="Email SINDHIYA B"
+              title="Email: poongodisindhiya@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+918825422116"
+              class="bearer-social"
+              aria-label="Call SINDHIYA B"
+              title="Contact: +91 8825422116">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="13">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/dhanush_s.png"
+            alt="DHANUSH S - Joint Secretary"
+            class="bearer-card__image"
+            style="object-position: center 15%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            14
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Joint Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            DHANUSH S
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/dhanush-dhanush-b08629379"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="DHANUSH S on LinkedIn"
+              title="LinkedIn: DHANUSH S">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&amp;utm_medium=copy_link&amp;utm_content=obhujpo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="DHANUSH S on Instagram"
+              title="Instagram: DHANUSH S">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:sdhanush31122005@gmail.com"
+              class="bearer-social"
+              aria-label="Email DHANUSH S"
+              title="Email: sdhanush31122005@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+918667498702"
+              class="bearer-social"
+              aria-label="Call DHANUSH S"
+              title="Contact: +91 8667498702">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="14">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/vishnu_sri_m.jpg"
+            alt="VISHNU SRI M - Joint Secretary (PG)"
+            class="bearer-card__image"
+            style="object-position: center 20%;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            15
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Joint Secretary (PG)
+          </p>
+
+          <h3 class="bearer-card__name">
+            VISHNU SRI M
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · PG · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/vishnusrim"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="VISHNU SRI M on LinkedIn"
+              title="LinkedIn: VISHNU SRI M">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/vs_vichu_10"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="VISHNU SRI M on Instagram"
+              title="Instagram: VISHNU SRI M">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:vishnusrim20@gmail.com"
+              class="bearer-social"
+              aria-label="Email VISHNU SRI M"
+              title="Email: vishnusrim20@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+918015721710"
+              class="bearer-social"
+              aria-label="Call VISHNU SRI M"
+              title="Contact: +91 8015721710">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+      <article
+        class="bearer-card"
+        data-index="15">
+
+        <!-- IMAGE -->
+
+        <div class="bearer-card__image-wrap">
+
+          <img
+            src="static/images/bearers/rohit_thanush_k.svg"
+            alt="ROHIT THANUSH K - Joint Secretary"
+            class="bearer-card__image"
+            style="object-position: center center;"
+            loading="lazy">
+
+          <span class="bearer-card__number">
+            16
+          </span>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="bearer-card__content">
+
+          <p class="bearer-card__role">
+            Joint Secretary
+          </p>
+
+          <h3 class="bearer-card__name">
+            ROHIT THANUSH K
+          </h3>
+
+          <p class="bearer-card__year">
+            SGE · 2025–2026
+          </p>
+
+          <!-- SOCIALS / MENTIONS -->
+          <div class="bearer-card__socials">
+
+            
+            <a
+              href="https://www.linkedin.com/in/rohit-thanush-014152257"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="ROHIT THANUSH K on LinkedIn"
+              title="LinkedIn: ROHIT THANUSH K">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="https://www.instagram.com/_rohit_k__thanush_____"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bearer-social"
+              aria-label="ROHIT THANUSH K on Instagram"
+              title="Instagram: ROHIT THANUSH K">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="mailto:thanushrohitk@gmail.com"
+              class="bearer-social"
+              aria-label="Email ROHIT THANUSH K"
+              title="Email: thanushrohitk@gmail.com">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+            
+
+            
+            <a
+              href="tel:+918667436592"
+              class="bearer-social"
+              aria-label="Call ROHIT THANUSH K"
+              title="Contact: +91 8667436592">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+
+      </article>
+
+      
+
+    </div>
+
+
+    <!-- RIGHT ARROW -->
+
+    <button
+      type="button"
+      class="bearer-arrow bearer-arrow--right"
+      id="bearer-next"
+      aria-label="Next office bearer">
+
+      <span>→</span>
+
+    </button>
+
+  </div>
+
+
+  <!-- DOTS -->
+
+  <div
+    class="bearer-dots"
+    id="bearer-dots">
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot active"
+      data-index="0"
+      aria-label="Show SANJAYKUMAR E">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="1"
+      aria-label="Show KEERTHIKA S">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="2"
+      aria-label="Show SEMMOZHI SELVAM S P">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="3"
+      aria-label="Show MONIKA DEVI E">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="4"
+      aria-label="Show RATHINAM RAMASAMY J">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="5"
+      aria-label="Show POOJA P">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="6"
+      aria-label="Show MIDHUN E">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="7"
+      aria-label="Show RAGUL ADHITHYA P">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="8"
+      aria-label="Show SANJANA B">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="9"
+      aria-label="Show KALAI CHEZHIYAN N">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="10"
+      aria-label="Show DHANUSREE G">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="11"
+      aria-label="Show THARUN VENKAT M">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="12"
+      aria-label="Show SINDHIYA B">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="13"
+      aria-label="Show DHANUSH S">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="14"
+      aria-label="Show VISHNU SRI M">
+    </button>
+
+    
+
+    <button
+      type="button"
+      class="bearer-dot "
+      data-index="15"
+      aria-label="Show ROHIT THANUSH K">
+    </button>
+
+    
+
+  </div>
+
+
+  <!-- COUNTER -->
+
+  <div class="bearer-counter">
+
+    <span id="bearer-current">01</span>
+
+    <span>/</span>
+
+    <span>
+      16
+    </span>
+
+  </div>
+
+</section>
+  <!-- ============================================================ -->
+  <!-- SPONSORS & ALUMNI                                            -->
+  <!-- ============================================================ -->
+  <section class="section section--paper supporters-section" id="sponsors-alumni">
+    <!-- Backwards-compatible anchors -->
+    <span id="sponsors" class="anchor-target"></span>
+    <span id="alumni" class="anchor-target"></span>
+
+    <div class="section__head">
+      <p class="eyebrow">Partnerships &amp; Community</p>
+      <h2 class="section__title">Sponsors &amp; Alumni</h2>
+      <p class="body-text">
+        Recognizing the esteemed corporate partners and dedicated alumni whose generous contributions power our academic workshops, symposiums, and geospatial initiatives.
+      </p>
+
+      <!-- Supporters Interactive Filter Tabs -->
+      <div class="supporter-tabs" role="tablist" aria-label="Filter supporters">
+        <button class="supporter-tab is-active" data-filter="all" type="button" role="tab" aria-selected="true">
+          <span class="supporter-tab__text">All Supporters</span>
+          <span class="supporter-tab__count">12</span>
+        </button>
+        <button class="supporter-tab" data-filter="sponsors" type="button" role="tab" aria-selected="false">
+          <span class="supporter-tab__text">Industry Sponsors</span>
+          <span class="supporter-tab__count">9</span>
+        </button>
+        <button class="supporter-tab" data-filter="alumni" type="button" role="tab" aria-selected="false">
+          <span class="supporter-tab__text">Alumni Support</span>
+          <span class="supporter-tab__count">3</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="supporters-grid">
+      <!-- SPONSORS COLUMN -->
+      <div class="supporters-pane supporters-pane--sponsors" data-category="sponsors">
+        <div class="supporter-card">
+          <div class="supporter-card__header">
+            <div class="supporter-card__title-group">
+              <span class="supporter-card__tag">Industry Network</span>
+              <h3 class="supporter-card__title">Corporate &amp; Technical Sponsors</h3>
+            </div>
+            <span class="supporter-card__count-badge">9 Partners</span>
+          </div>
+
+          <p class="supporter-card__desc">
+            Proudly supported by leading organizations and enterprises driving innovation in geospatial technologies, surveying, and infrastructure.
+          </p>
+
+          <div class="sponsor-grid">
+            
+            <div class="sponsor-card" title="L&amp;T Construction">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/lt_construction.jpeg"
+                  alt="L&amp;T Construction logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">L&amp;T Construction</span>
+            </div>
+            
+            <div class="sponsor-card" title="Redplanet">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/redplanet.jpeg"
+                  alt="Redplanet logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">Redplanet</span>
+            </div>
+            
+            <div class="sponsor-card" title="Cygnus Technical">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/cygnus.jpg"
+                  alt="Cygnus Technical logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">Cygnus Technical</span>
+            </div>
+            
+            <div class="sponsor-card" title="Hexamap Solutions">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/hexamap.jpeg"
+                  alt="Hexamap Solutions logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">Hexamap Solutions</span>
+            </div>
+            
+            <div class="sponsor-card" title="Utest Asia">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/Utest.png"
+                  alt="Utest Asia logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">Utest Asia</span>
+            </div>
+            
+            <div class="sponsor-card" title="Alphics Phonix">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/alphics_phonix.jpg"
+                  alt="Alphics Phonix logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">Alphics Phonix</span>
+            </div>
+            
+            <div class="sponsor-card" title="SR Infra">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/sr_infra.png"
+                  alt="SR Infra logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">SR Infra</span>
+            </div>
+            
+            <div class="sponsor-card" title="Gridline Surveys">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/gridline.png"
+                  alt="Gridline Surveys logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">Gridline Surveys</span>
+            </div>
+            
+            <div class="sponsor-card" title="Alterra">
+              <div class="sponsor-card__img-container">
+                <img
+                  src="static/images/sponsors/alterra.webp"
+                  alt="Alterra logo"
+                  class="sponsor-card__img"
+                  loading="lazy"
+                >
+              </div>
+              <span class="sponsor-card__caption">Alterra</span>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- ALUMNI COLUMN -->
+      <div class="supporters-pane supporters-pane--alumni" data-category="alumni">
+        <div class="supporter-card supporter-card--alumni">
+          <div class="supporter-card__header">
+            <div class="supporter-card__title-group">
+              <span class="supporter-card__tag supporter-card__tag--brass">IRS &amp; CEG Heritage</span>
+              <h3 class="supporter-card__title">Alumni Contributions</h3>
+            </div>
+            <span class="supporter-card__count-badge">Legacy Patrons</span>
+          </div>
+
+          <p class="supporter-card__desc">
+            With sincere gratitude to our senior graduates and alumni batches for their continuous mentorship, encouragement, and patronage to the Society.
+          </p>
+
+          <ul class="alumni-list">
+            
+            <li class="alumni-card">
+              <span class="alumni-card__icon" aria-hidden="true">&#9670;</span>
+              <span class="alumni-card__name">Alumni 2003–2007 Batch</span>
+            </li>
+            
+            <li class="alumni-card">
+              <span class="alumni-card__icon" aria-hidden="true">&#9670;</span>
+              <span class="alumni-card__name">Alumni — Hari</span>
+            </li>
+            
+            <li class="alumni-card">
+              <span class="alumni-card__icon" aria-hidden="true">&#9670;</span>
+              <span class="alumni-card__name">Alumni 2016–2020</span>
+            </li>
+            
+          </ul>
+
+          <div class="alumni-connect-box">
+            <div class="alumni-connect-box__content">
+              <h4 class="alumni-connect-box__title">Are you an IRS / CEG Alumnus?</h4>
+              <p class="alumni-connect-box__text">Reconnect with the Society, mentor current Geoinformatics students, or collaborate on upcoming events.</p>
+            </div>
+            <a href="mailto:sge.cegofficial@gmail.com" class="alumni-connect-btn">
+              <span>Connect with SGE</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <img src="static/images/logo.png" alt="SGE emblem" class="footer__logo">
+      <p>Society of Geoinformatics Engineers</p>
+    </div>
+    <div class="footer__col">
+      <p class="footer__heading">Find us</p>
+      <p>Institute of Remote Sensing, College of Engineering Guindy, Anna University</p>
+      <p>College of Engineering Guindy Campus, Anna University, Chennai &ndash; 600025</p>
+      <p class="mono-tag">13.0110° N, 80.2354° E</p>
+    </div>
+    <div class="footer__col">
+      <p class="footer__heading">Follow SGE</p>
+      <p><a href="https://www.instagram.com/_sge_official/" target="_blank" rel="noopener">Instagram &mdash; _sge_official</a></p>
+      <p><a href="https://x.com/Sge__official" target="_blank" rel="noopener">X &mdash; Sge__official</a></p>
+      <p><a href="https://www.linkedin.com/in/sge01/" target="_blank" rel="noopener">LinkedIn &mdash; Society of Geoinformatics Engineers CEG</a></p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>&copy; 2026 SGE &middot; Institute of Remote Sensing, College of Engineering Guindy, Anna University</p>
+  </div>
+</footer>
+
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<script
+  src="static/js/main.js">
+</script>
+</body>
+</html>

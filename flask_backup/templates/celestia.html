@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}CELESTIA 2026 | {{ site.org_name }}{% endblock %}
+
+{% block body %}
+<div class="grain"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ site.org_short }} emblem" class="nav__logo">
+      <span class="nav__brand-text">
+        <span class="nav__brand-short">CELESTIA</span>
+        <span class="nav__brand-long">Back to Home</span>
+      </span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="min-height: 60vh;">
+    <div class="hero__inner" style="text-align: center; margin: 0 auto;">
+      <h1 class="hero__title">CELESTIA 2026</h1>
+      <p class="hero__lede">Where space science meets geospatial technology.</p>
+      <div class="hero__actions" style="justify-content: center;">
+        <a href="#register" class="btn btn--primary">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="section__head">
+      <h2 class="section__title">About the Event</h2>
+      <p class="body-text">
+        CELESTIA is a student-focused event organised by the Society of Geoinformatics
+        Engineers (SGE), bringing together the exciting fields of space science, Earth
+        observation, Remote Sensing, and Geospatial Technology. The event seeks to raise
+        awareness and spark interest among students about the role of space and satellite
+        technologies in solving real-world problems.
+      </p>
+      <ul style="margin-top: 2rem; font-size: 1.1rem; line-height: 1.6;">
+        <li>🚀 Technical sessions & expert talks</li>
+        <li>🏆 Student competitions</li>
+        <li>🌍 Run with National Space Week</li>
+      </ul>
+    </div>
+  </section>
+</main>
+{% endblock %}

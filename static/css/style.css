@@ -24,7 +24,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background-color: var(--navy-900); }
 
 body {
   margin: 0;
@@ -278,7 +278,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 7rem 1.5rem 4rem;
+  padding: 9rem 1.5rem 4rem;
 }
 .hero__contours {
   position: absolute;
@@ -5438,4 +5438,70 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     right: 2px;
   }
 
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* Original simple star banner for main page */
+.stars-banner {
+  background-color: var(--navy-800);
+  background-image: 
+    radial-gradient(1px 1px at 20px 20px, rgba(255,255,255,0.8) 100%, transparent),
+    radial-gradient(1.5px 1.5px at 60px 40px, rgba(255,255,255,0.6) 100%, transparent),
+    radial-gradient(2px 2px at 100px 10px, rgba(255,255,255,0.4) 100%, transparent),
+    radial-gradient(1px 1px at 140px 60px, rgba(255,255,255,0.9) 100%, transparent),
+    radial-gradient(1px 1px at 180px 30px, rgba(255,255,255,0.5) 100%, transparent),
+    radial-gradient(1.5px 1.5px at 220px 80px, rgba(255,255,255,0.7) 100%, transparent);
+  background-size: 250px 100px;
+}
+
+/* Dense blinking star background for Celestia hero */
+.stars-hero {
+  background-color: var(--navy-800);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure content sits above the stars */
+.stars-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.stars-hero::before,
+.stars-hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Layer 1 - Sparse Stars */
+.stars-hero::before {
+  background-image: 
+    radial-gradient(1.5px 1.5px at 50px 120px, rgba(255,255,255,0.9) 100%, transparent),
+    radial-gradient(2px 2px at 200px 80px, rgba(255,255,255,0.7) 100%, transparent),
+    radial-gradient(1px 1px at 300px 200px, rgba(255,255,255,0.8) 100%, transparent),
+    radial-gradient(2.5px 2.5px at 100px 250px, rgba(255,255,255,1) 100%, transparent),
+    radial-gradient(1.5px 1.5px at 350px 150px, rgba(255,255,255,0.6) 100%, transparent),
+    radial-gradient(2px 2px at 250px 300px, rgba(255,255,255,0.8) 100%, transparent);
+  background-size: 400px 400px;
+  animation: twinkle 4s infinite ease-in-out;
+}
+
+/* Layer 2 - Very Sparse, different timing */
+.stars-hero::after {
+  background-image: 
+    radial-gradient(1px 1px at 80px 40px, rgba(255,255,255,0.6) 100%, transparent),
+    radial-gradient(2px 2px at 250px 150px, rgba(255,255,255,0.9) 100%, transparent),
+    radial-gradient(1.5px 1.5px at 50px 250px, rgba(255,255,255,0.7) 100%, transparent),
+    radial-gradient(1px 1px at 350px 350px, rgba(255,255,255,0.8) 100%, transparent),
+    radial-gradient(2px 2px at 180px 320px, rgba(255,255,255,0.5) 100%, transparent);
+  background-size: 450px 450px;
+  animation: twinkle 3s infinite ease-in-out alternate-reverse;
 }
