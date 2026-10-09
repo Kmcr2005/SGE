@@ -2767,6 +2767,58 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 
 /* =========================================================
+   "CLICK ME" TOOLTIP
+   ========================================================= */
+
+.about__visual .about__badge::after {
+  content: "Click me!";
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--brass);
+  color: var(--navy-900);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: bounceTooltip 2s infinite ease-in-out;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.about__visual .about__badge::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: var(--brass) transparent transparent transparent;
+  pointer-events: none;
+  animation: bounceTooltip 2s infinite ease-in-out;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes bounceTooltip {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
+
+/* Hide tooltip when map is open */
+.about__visual.is-map-active .about__badge::after,
+.about__visual.is-map-active .about__badge::before {
+  opacity: 0;
+  animation: none;
+}
+
+
+/* =========================================================
    BUTTON HOVER
    ========================================================= */
 
